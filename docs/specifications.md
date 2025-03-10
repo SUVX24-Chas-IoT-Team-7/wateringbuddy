@@ -71,11 +71,13 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 - Efter värdet har justerats och LCD visat det nya värdet ska den vara på ytterligare 10 sekunder och visa sensordata.
   
 - Nya mätvärden ska registreras var 5:e minut.
+- Användaren ska kunna välja att nya värden mäts kontinuerligt genom att hålla ned knapp 1 i 3 sekunder. 
 
 ### 2.2 Icke-funktionella krav
 
 - Produkten ska vara lättanvänd.
 - Som användare ska man förstå hur man ska sätta ner produkten i en kruka.
+
 ### 2.3 Krav på hårdvara
 
 - Det ska finnas en jordfuktighetssensor
