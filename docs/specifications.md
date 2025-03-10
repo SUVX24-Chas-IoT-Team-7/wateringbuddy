@@ -15,9 +15,11 @@ Denna produkt är avsedd för dem som har en växt hemma och inte vet hur, vill 
 Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan automatiskt mäta av och visa upp olika värden som jordens fuktighet. 
 
 ### 1.4 Definitioner och Förkortningar
+
 - UV: Ultraviolett
 - LED: Light Emitting Diode
 - LCD: Liquid Crystal Display 
+  
 ### 1.5 Innehållsförteckning
 
 - [Requirement specification](#requirement-specification)
