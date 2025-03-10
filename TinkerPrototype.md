@@ -1,1 +1,1 @@
-https://www.tinkercad.com/things/5pgghFmT8Oj-grand-elzing?sharecode=0GRb4mZyEBDnxjuPdtjDETcBp4W0Dn9LCWUGB5CIy_w
+https://www.tinkercad.com/things/dMDFOaZUTWb-prototyp-projekt?sharecode=zTgo1VU2ALs9WR2Jf53lawWCSfpzSB5N_bMIrpz0U8c
