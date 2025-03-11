@@ -85,6 +85,9 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 - Det ska finnas en jordfuktighetssensor
 - Det ska finnas en UV-ljussensor
 - Arduino UNO R4 WIFI
+- Det ska finnas en LCD I2C
+- Det ska finnas LED:s
+- Det ska finnas pushbuttons
 
 ## 3. Krav på externt gränssnitt
 
