@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef __STORAGE_CLASS__
-#define __STORAGE_CLASS__
+#ifndef __PIN_CLASS_HPP__
+#define __PIN_CLASS_HPP__
 
 #include <stdint.h>
 #include <Arduino.h>

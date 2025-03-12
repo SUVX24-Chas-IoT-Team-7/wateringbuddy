@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include "Sensor.hpp"
+#include "Pin.hpp"
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
