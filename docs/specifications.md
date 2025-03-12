@@ -4,7 +4,7 @@
 
 ### 1.1 Produkts omfång
 
-Produkten ska kunna mäta och visa upp olika värden för att kunna ge krukväxter de bästa möjliga förutsättningarna att växa på rätt sätt. Med denna produkt ska man kunna se ifall man behöver vattna sin växt så att man kan lättare hantera de växter man har hemma.
+Produkten ska kunna mäta och visa upp UV-ljus och jordfuktighet för att kunna ge krukväxter de bästa möjliga förutsättningarna att växa på rätt sätt. Med denna produkt ska man kunna se ifall man behöver vattna sin växt så att man kan lättare hantera de växter man har hemma. Status på jordfuktigheten visas på röd, grön, gul och blå LED och om växten får för lite eller för mycket ljus börjar en annan gul LED lysa. Mer information kring dessa förhållanden ska kunna visas på en LCD.
 
 ### 1.2 Målgrupp
 
@@ -85,6 +85,9 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 - Det ska finnas en jordfuktighetssensor
 - Det ska finnas en UV-ljussensor
 - Arduino UNO R4 WIFI
+- Det ska finnas en LCD I2C
+- Det ska finnas LED:s
+- Det ska finnas pushbuttons
 
 ## 3. Krav på externt gränssnitt
 
