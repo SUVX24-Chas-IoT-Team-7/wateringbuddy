@@ -2,4 +2,4 @@
 Watering Buddy - IoT School Project 
 
 ## Documentation
-- [Software Design Document](docs/specifications.md)
+- [Software Requirement Specification](docs/specifications.md)
