@@ -1,4 +1,8 @@
 #include <Arduino.h>
+#include "Sensor.hpp"
+
+Sensor humidity{ A0 };
+
 #include <LiquidCrystal.h>
 //#define MOISTSENSOR_EXISTS
 
@@ -39,6 +43,8 @@ namespace moisture {
 
 void setup()
 {
+  uint8_t value = humidity.read();
+  
   lcd.begin(16, 2);
   pinMode(switchPin, INPUT);
     
@@ -105,7 +111,6 @@ void loop()
 
   delay(500); // Wait for 500 millisecond(s)
 }
-
 
 
 
