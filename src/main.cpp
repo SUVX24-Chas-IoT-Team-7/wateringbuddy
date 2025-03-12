@@ -5,9 +5,7 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
-
-Pin humidity{ A0, INPUT };
+LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 #define MOISTSENSOR_EXISTS
 
@@ -45,7 +43,6 @@ namespace uvsensor {
 
 void setup()
 {
-  uint8_t value = humidity.read();
   
   // initialize the lcd 
   lcd.init();                      
@@ -68,7 +65,6 @@ void setup()
 }
 
 void loop() {
-
   // read new sensor values
 
   #ifdef MOISTSENSOR_EXISTS
