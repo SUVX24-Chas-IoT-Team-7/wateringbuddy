@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "Sensor.hpp"
+#include "Pin.hpp"
 
-Sensor humidity{ A0 };
+Pin humidity{ A0, INPUT };
 
 #include <LiquidCrystal.h>
 //#define MOISTSENSOR_EXISTS
