@@ -21,13 +21,26 @@
 class Sensor 
 {
 public:
-
     /**
      * @brief Reads value from given pin as an analog value.
      * 
-     * @return const uint8_t 
+     * @returns value or -1 on error
      */
     const uint8_t read();
+
+    /**
+     * @brief Writes to specified pin using digitalWrite()
+     * 
+     * @param status High or Low (true or false)
+     */
+    void Sensor::write(bool status);
+
+    /**
+     * @brief Writes to pin using analogWrite()
+     * 
+     * @param status Value between 0 - 1023
+     */
+    void Sensor::write(int status);
 
     /**
      * @brief Construct a new Sensor object
@@ -36,12 +49,11 @@ public:
      * 
      * @param pin Which pin to read data from.
      */
-    Sensor(int pin);
+    Sensor(int pin, PinMode);
 
 private:
-
+    PinMode m_mode;
     uint8_t m_pin, m_data;
-
 };
 
 #endif
