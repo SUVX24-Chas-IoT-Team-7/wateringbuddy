@@ -5,6 +5,7 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
+
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 #define MOISTSENSOR_EXISTS
@@ -38,6 +39,7 @@ namespace uvsensor {
   int rawReading = 0;
   int prevRawReading = rawReading;
   float percent = 0;
+  int thresholds[] = {120, 1000};
 } // uvsensor
 
 
@@ -102,18 +104,18 @@ void loop() {
   }
 
   // print to serial monitor
-  Serial.print("Moist: ");
+  Serial.print("UV: ");
   Serial.println(moisture::rawReading);
 
   // print to lcd
   lcd.setCursor(0, 0);
   lcd.print("Moist:     ");
-  lcd.setCursor(8, 0);
+  lcd.setCursor(7, 0);
   lcd.print(moisture::percent);
   lcd.print("%");
   lcd.setCursor(0, 1);
-  lcd.print("UV:     ");
-  lcd.setCursor(4, 1);
+  lcd.print("Light:     ");
+  lcd.setCursor(7, 1);
   lcd.print(uvsensor::rawReading);
 
 
