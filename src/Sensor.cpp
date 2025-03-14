@@ -19,7 +19,7 @@ int Sensor::getData()
 
 void Sensor::read() 
 {
-    this->m_data = this->m_pin->read(false);
+    this->m_data = this->m_pin->read(Pin::ANALOG);
 }
 
 void Sensor::init() 

@@ -22,6 +22,8 @@
 class Pin 
 {
 public:
+    enum ReadType { ANALOG, DIGITAL };
+
     /**
      * @brief Reads value from given pin as an analog value.
      * 
@@ -29,7 +31,7 @@ public:
      * 
      * @returns value or -1 on error
      */
-    const uint16_t read(bool digital);
+    const uint16_t read(ReadType readType);
 
     /**
      * @brief Writes to specified pin using digitalWrite()
@@ -56,7 +58,7 @@ public:
 
 private:
     PinMode m_mode;
-    uint8_t m_pin, m_data;
+    uint8_t m_pin;
 };
 
 #endif
