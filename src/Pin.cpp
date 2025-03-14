@@ -2,11 +2,12 @@
 
 #include <Arduino.h>
 
-const std::optional<uint16_t> Pin::read()
+const std::optional<uint16_t> Pin::read(ReadType readType)
 {
     if (this->m_mode != INPUT) return {}; 
-    this->m_data = analogRead(this->m_pin);
-    return this->m_data;
+
+    if (readType == DIGITAL) return digitalRead(this->m_pin);
+    else return analogRead(this->m_pin);
 }
 
 void Pin::write(bool status)

@@ -53,10 +53,10 @@ controlflow {
 <ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="cfc99ca2-fff4-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="96c50eee-fff6-11ef-8b65-58cdc9d6ec65"/>
+<ref refid="096f7b32-00b5-11f0-b1fd-58cdc9d6ec65"/>
 <ref refid="ef0fd3d4-ffee-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="5a530fac-fff0-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="ff89623c-fff5-11ef-8b65-58cdc9d6ec65"/>
-<ref refid="096f7b32-00b5-11f0-b1fd-58cdc9d6ec65"/>
 </reflist>
 </packagedElement>
 </UML:Package>
@@ -478,16 +478,16 @@ existing classes or even new classes with specific responsibilities.</val>
 </UML:ClassDiagram>
 <UML:ClassItem id="7989569c-ffeb-11ef-8b65-58cdc9d6ec65">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 681.6178363940486, 170.95999248685203)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 681.6178363940488, 164.23942528086275)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>150.0</val>
+<val>175.0</val>
 </width>
 <height>
-<val>140.0</val>
+<val>160.0</val>
 </height>
 <diagram>
 <ref refid="6627c3e0-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -516,6 +516,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="bb2d8be2-ffee-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="15273508-ffef-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="68e6385e-00b4-11f0-b1fd-58cdc9d6ec65"/>
+<ref refid="b1ba7b20-00d3-11f0-ab3a-58cdc9d6ec65"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -573,7 +574,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </UML:Class>
 <UML:ClassItem id="a74325ac-ffed-11ef-8b65-58cdc9d6ec65">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 348.82554661780574, 170.959992486852)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 348.82554661780574, 164.23942528086275)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -713,6 +714,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <ownedParameter>
 <reflist>
 <ref refid="298ca51a-ffee-11ef-8b65-58cdc9d6ec65"/>
+<ref refid="87da2584-00d4-11f0-ab3a-58cdc9d6ec65"/>
 </reflist>
 </ownedParameter>
 </UML:Operation>
@@ -732,14 +734,8 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="798914a2-ffeb-11ef-8b65-58cdc9d6ec65"/>
 </class_>
 <name>
-<val>pin</val>
+<val>- pin: Pin*</val>
 </name>
-<typeValue>
-<val>Pin</val>
-</typeValue>
-<visibility>
-<val>private</val>
-</visibility>
 </UML:Property>
 <UML:Operation id="bb2d8be2-ffee-11ef-8b65-58cdc9d6ec65">
 <class_>
@@ -782,10 +778,10 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="ef0fd3d4-ffee-11ef-8b65-58cdc9d6ec65"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 687.1629597705556, 192.68306646005527)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 687.1629597705556, 196.40665863922587)</val>
 </matrix>
 <points>
-<val>[(-5.545123376507036, -2.1742150325571856), (-100.33741315274995, -2.1742150325571856)]</val>
+<val>[(-5.545123376506922, -12.618374417717007), (-100.33741315274995, -12.618374417717035)]</val>
 </points>
 <head-connection>
 <ref refid="7989569c-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -858,10 +854,10 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="5a530fac-fff0-11ef-8b65-58cdc9d6ec65"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 682.5552869681513, 337.3809899746431)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 682.5552869681513, 335.3422659576131)</val>
 </matrix>
 <points>
-<val>[(-31.212442217994635, 28.42880808015599), (-65.74297990232901, 28.428808080156045), (-65.74297990232901, -138.31712821656646), (-95.72974035034565, -138.31712821656646)]</val>
+<val>[(-38.93745057410274, 77.18809930317525), (-65.74297990232901, 77.18809930317536), (-65.74297990232901, -142.99897140552577), (-95.72974035034565, -142.9989714055257)]</val>
 </points>
 <head-connection>
 <ref refid="20d0b976-ffed-11ef-8b65-58cdc9d6ec65"/>
@@ -879,7 +875,6 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="a93ec6fc-fff4-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="c95e0e52-fff4-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="4d36a6b2-fff5-11ef-8b65-58cdc9d6ec65"/>
-<ref refid="6bdc9e0a-fff5-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="702109ba-fff5-11ef-8b65-58cdc9d6ec65"/>
 </reflist>
 </ownedAttribute>
@@ -887,6 +882,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <reflist>
 <ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="8714230e-fff6-11ef-8b65-58cdc9d6ec65"/>
+<ref refid="53764ca0-00d4-11f0-ab3a-58cdc9d6ec65"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -922,7 +918,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>527.0</val>
 </width>
 <height>
-<val>200.0</val>
+<val>220.0</val>
 </height>
 <diagram>
 <ref refid="6627c3e0-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -953,7 +949,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>powerPin</val>
 </name>
 <typeValue>
-<val>int</val>
+<val>uint8_t</val>
 </typeValue>
 <visibility>
 <val>private</val>
@@ -996,7 +992,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>100.0</val>
+<val>116.0</val>
 </width>
 <height>
 <val>132.0</val>
@@ -1019,7 +1015,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>red</val>
 </name>
 <typeValue>
-<val>int</val>
+<val>uint8_t</val>
 </typeValue>
 </UML:Property>
 <UML:Property id="ea1aca2c-fff4-11ef-8b65-58cdc9d6ec65">
@@ -1030,7 +1026,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>green</val>
 </name>
 <typeValue>
-<val>int</val>
+<val>uint8_t</val>
 </typeValue>
 </UML:Property>
 <UML:Property id="ecfae5a6-fff4-11ef-8b65-58cdc9d6ec65">
@@ -1041,7 +1037,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>yellow</val>
 </name>
 <typeValue>
-<val>int</val>
+<val>uint8_t</val>
 </typeValue>
 </UML:Property>
 <UML:Property id="ee8c82da-fff4-11ef-8b65-58cdc9d6ec65">
@@ -1052,7 +1048,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>blue</val>
 </name>
 <typeValue>
-<val>int</val>
+<val>uint8_t</val>
 </typeValue>
 </UML:Property>
 <UML:Property id="4d36a6b2-fff5-11ef-8b65-58cdc9d6ec65">
@@ -1071,20 +1067,6 @@ existing classes or even new classes with specific responsibilities.</val>
 <upperValue>
 <val>3</val>
 </upperValue>
-<visibility>
-<val>private</val>
-</visibility>
-</UML:Property>
-<UML:Property id="6bdc9e0a-fff5-11ef-8b65-58cdc9d6ec65">
-<class_>
-<ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
-</class_>
-<name>
-<val>rawReading</val>
-</name>
-<typeValue>
-<val>int</val>
-</typeValue>
 <visibility>
 <val>private</val>
 </visibility>
@@ -1123,7 +1105,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, 853.9137121859152, 317.9113448534937)</val>
 </matrix>
 <points>
-<val>[(170.76180484960253, -72.43491722767567), (65.49934370010817, -72.43491722767567), (65.49934370010828, 6.328080427369173)]</val>
+<val>[(170.76180484960253, -64.98327371377908), (73.49934370010817, -64.98327371377911), (73.49934370010828, 6.328080427369173)]</val>
 </points>
 <head-connection>
 <ref refid="93737aac-fff4-11ef-8b65-58cdc9d6ec65"/>
@@ -1388,7 +1370,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </UML:Parameter>
 <UML:ClassItem id="20d0b976-ffed-11ef-8b65-58cdc9d6ec65">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 651.3428447501567, 324.2394252808628)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 643.6178363940486, 370.95999248685206)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1539,10 +1521,10 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="a38f3c54-fffa-11ef-8b65-58cdc9d6ec65"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1021.1015331343024, 32.751488384134746)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1021.1015331343023, 32.751488384134746)</val>
 </matrix>
 <points>
-<val>[(-253.44749212859585, 138.20850410271726), (-253.44749212859585, 0.0), (3.573983901215456, 0.0)]</val>
+<val>[(-239.1081246933195, 131.487936896728), (-239.1081246933195, 0.0), (3.573983901215456, 0.0)]</val>
 </points>
 <head-connection>
 <ref refid="7989569c-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -1578,10 +1560,10 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="a4a2a40a-fffa-11ef-8b65-58cdc9d6ec65"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1028.9796073231282, 191.51978162061607)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1028.9796073231282, 193.55850563764608)</val>
 </matrix>
 <points>
-<val>[(-197.36177092907963, 2.2472129636562954), (-4.3040902876105065, 2.2472129636562954)]</val>
+<val>[(-172.36177092907963, -3.253935102588656), (-4.3040902876105065, -3.2539351025886276)]</val>
 </points>
 <head-connection>
 <ref refid="7989569c-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -1975,6 +1957,52 @@ existing classes or even new classes with specific responsibilities.</val>
 </ownerFormalParam>
 <typeValue>
 <val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="b1ba7b20-00d3-11f0-ab3a-58cdc9d6ec65">
+<class_>
+<ref refid="798914a2-ffeb-11ef-8b65-58cdc9d6ec65"/>
+</class_>
+<name>
+<val># getPin(): Pin*</val>
+</name>
+</UML:Operation>
+<UML:Operation id="53764ca0-00d4-11f0-ab3a-58cdc9d6ec65">
+<class_>
+<ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
+</class_>
+<name>
+<val>init</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="552b5da6-00d4-11f0-ab3a-58cdc9d6ec65"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="552b5da6-00d4-11f0-ab3a-58cdc9d6ec65">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="53764ca0-00d4-11f0-ab3a-58cdc9d6ec65"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="87da2584-00d4-11f0-ab3a-58cdc9d6ec65">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>digital</val>
+</name>
+<ownerFormalParam>
+<ref refid="298ac2b8-ffee-11ef-8b65-58cdc9d6ec65"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
 </typeValue>
 </UML:Parameter>
 </model>
