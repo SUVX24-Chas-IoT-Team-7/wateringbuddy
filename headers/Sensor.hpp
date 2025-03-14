@@ -13,9 +13,10 @@
 #define __SENSOR_CLASS_HPP__
 
 #include <stdint.h>
+#include "Pin.hpp"
 
 /**
- * @brief This class handles sensor input and reads sensor data
+ * @brief This class is a wrapper for the pin  sensor data
  * 
  */
 class Sensor 
@@ -27,21 +28,33 @@ public:
      * 
      * @return const uint8_t 
      */
-    const uint8_t read();
+    virtual void read();
+
+    /**
+     * @brief Gets the data from `read()`.
+     */
+    int getData();
 
     /**
      * @brief Construct a new Sensor object
-     * 
-     * @details Sets the ´pin´ to INPUT using ´pinMode´
      * 
      * @param pin Which pin to read data from.
      */
     Sensor(int pin);
 
+    virtual ~Sensor();
+
+    /**
+     * @brief Sets the ´pin´ to INPUT using ´pinMode´
+     */
+    virtual void init();
+
 private:
 
-    uint8_t m_pin, m_data;
+    Pin *m_pin;
+    int m_pinNumber;
 
+    int m_data = -1;
 };
 
 #endif
