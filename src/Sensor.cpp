@@ -1,16 +1,13 @@
 #include "Sensor.hpp"
 #include <Arduino.h>
 
-Sensor::Sensor(int pin) : m_pinNumber(pin)
-{
+Sensor::Sensor(int pin, PinMode pinMode) : m_pin(pin, pinMode) {}
 
-}
-
-Sensor::~Sensor() 
-{
-    delete this->m_pin;
-    this->m_pin = nullptr;
-}
+// Sensor::~Sensor() 
+// {
+//     delete this->m_pin;
+//     this->m_pin = nullptr;
+// }
 
 int Sensor::getData()
 {
@@ -19,17 +16,17 @@ int Sensor::getData()
 
 void Sensor::read() 
 {
-    this->m_data = this->m_pin->read(Pin::ANALOG).value_or(0);
+    this->m_data = this->m_pin.read(Pin::ANALOG).value_or(0);
 }
 
 void Sensor::init() 
 {
-    this->m_pin = new Pin(m_pinNumber, INPUT);
+    m_pin.init();
 }
 
 Pin *Sensor::getPin() 
 {
-    return this->m_pin;
+    return &(this->m_pin);
 }
 
 

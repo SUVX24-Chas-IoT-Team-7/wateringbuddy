@@ -1,7 +1,7 @@
 #include "MoistureSensor.hpp"
 
 MoistureSensor::MoistureSensor(uint8_t powerPin, uint8_t inputPin, LedPins ledPins, int thresholds[3])
-    : Sensor(inputPin), m_powerPin(powerPin), m_ledPins(ledPins)
+    : Sensor(inputPin, INPUT), m_powerPin(powerPin), m_ledPins( ledPins )
 {
     this->thresholds[0] = thresholds[0];
     this->thresholds[1] = thresholds[1];
