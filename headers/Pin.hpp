@@ -1,8 +1,8 @@
 /**
  * @file Pin.hpp
- * @author Love Lindeborg (lindeborglove@gmail.com)
+ * @author Love Lindeborg (lindeborglove@gmail.com) & Erik Dahl (erik@iunderlandet.se)
  * @brief This file handles the state of pins
- * @version 0.1
+ * @version 0.2
  * @date 2025-03-10
  * 
  * @copyright Copyright (c) 2025
@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include <Arduino.h>
+#include <optional>
 
 /**
  * @brief This class handles sensor input and reads sensor data
@@ -27,14 +28,13 @@ public:
     /**
      * @brief Reads value from given pin as an analog value.
      * 
-     * @param digital Whether or not the method read an analog or a digital value
-     * 
-     * @returns value or -1 on error
+     * @returns std::optional which is empty on error
+     * Remember to check before calling value() on the returned result
      */
-    const uint16_t read(ReadType readType);
+    const std::optional<uint16_t> read(ReadType readType);
 
     /**
-     * @brief Writes to specified pin using digitalWrite()
+     * @brief Writes to pin using digitalWrite()
      * 
      * @param status High or Low (true or false)
      */
@@ -48,11 +48,17 @@ public:
     void write(int status);
 
     /**
+     * @brief Sets the ´pin´ to INPUT/OUTPUT using ´pinMode´
+     * 
+     * To be called by users of class in setup() 
+     */
+    void init();
+
+    /**
      * @brief Construct a new Pin object
      * 
-     * @details Sets the ´pin´ to INPUT using ´pinMode´
-     * 
      * @param pin Which pin to read data from.
+     * @param PinMode If set to INPUT or OUTPUT
      */
     Pin(int pin, PinMode);
 
