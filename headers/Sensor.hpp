@@ -49,11 +49,13 @@ public:
      */
     virtual void init();
 
+    
 protected:
+
     int m_pinNumber;
+    Pin *getPin();
 
 private:
-
     Pin *m_pin;
 
     int m_data = -1;
