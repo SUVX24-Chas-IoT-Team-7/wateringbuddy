@@ -28,7 +28,7 @@ void MoistureSensor::init()
 void MoistureSensor::read() {
     digitalWrite(m_powerPin, HIGH);
 
-    this->m_data = getPin()->read(Pin::ANALOG);
+    this->m_data = getPin()->read(Pin::ANALOG).value_or(0);
 
     digitalWrite(m_powerPin, LOW);
 }
