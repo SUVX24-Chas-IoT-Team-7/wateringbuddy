@@ -54,11 +54,11 @@ protected:
 
     int m_pinNumber;
     Pin *getPin();
-
+    
+    int m_data = -1;
 private:
     Pin *m_pin;
 
-    int m_data = -1;
 };
 
 #endif
