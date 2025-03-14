@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef __STORAGE_CLASS__
-#define __STORAGE_CLASS__
+#ifndef __SENSOR_CLASS_HPP__
+#define __SENSOR_CLASS_HPP__
 
 #include <stdint.h>
 

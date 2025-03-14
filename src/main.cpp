@@ -47,7 +47,7 @@ void setup()
 {
   
   // initialize the lcd 
-  lcd.init();                      
+  lcd.init();
   lcd.backlight();
   
   // initialize sensors
