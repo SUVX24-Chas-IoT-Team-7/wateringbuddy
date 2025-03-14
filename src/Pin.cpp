@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-const uint8_t Pin::read()
+const uint16_t Pin::read(bool digital)
 {
     if (this->m_mode != INPUT) return -1; 
     this->m_data = analogRead(this->m_pin);
