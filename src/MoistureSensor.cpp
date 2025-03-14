@@ -12,9 +12,14 @@ void MoistureSensor::init()
 {
     pinMode(m_powerPin, OUTPUT);
     
-    for (uint8_t *i = (uint8_t *) &m_ledPins.green; (uint32_t) i < (uint32_t) &m_ledPins.blue; i++) {
-        pinMode(*i, OUTPUT);
-    }
+    pinMode(this->m_ledPins.blue, OUTPUT);
+    pinMode(this->m_ledPins.red, OUTPUT);
+    pinMode(this->m_ledPins.yellow, OUTPUT);
+    pinMode(this->m_ledPins.green, OUTPUT);
+
+    // for (uint8_t *i = &m_ledPins.green; i < &m_ledPins.blue; i++) {
+    //     pinMode(*i, OUTPUT);
+    // }
 
     pinMode(this->m_pinNumber, INPUT);
 }
