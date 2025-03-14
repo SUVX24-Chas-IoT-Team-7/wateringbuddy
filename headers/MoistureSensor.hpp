@@ -47,6 +47,8 @@ public:
     * 
     */
    void read() override;
+
+   time_t timeSinceLastMeasurement();
  
 private:
    uint8_t m_powerPin;
@@ -54,6 +56,8 @@ private:
 
    int thresholds[3];
    float percentage = 0;
+
+   time_t lastMeasurement;
 
 };
  
