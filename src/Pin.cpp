@@ -5,7 +5,10 @@
 const uint16_t Pin::read(bool digital)
 {
     if (this->m_mode != INPUT) return -1; 
-    this->m_data = analogRead(this->m_pin);
+
+    if (digital) this->m_data = digitalRead(this->m_pin);
+    else this->m_data = analogRead(this->m_pin);
+    
     return this->m_data;
 }
 
