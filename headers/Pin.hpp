@@ -25,9 +25,11 @@ public:
     /**
      * @brief Reads value from given pin as an analog value.
      * 
+     * @param digital Whether or not the method read an analog or a digital value
+     * 
      * @returns value or -1 on error
      */
-    const uint8_t read();
+    const uint16_t read(bool digital);
 
     /**
      * @brief Writes to specified pin using digitalWrite()
