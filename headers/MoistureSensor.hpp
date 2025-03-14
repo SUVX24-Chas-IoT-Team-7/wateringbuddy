@@ -9,46 +9,52 @@
  * 
  */
 
- #ifndef __MOISTURE_SENSOR_CLASS_HPP__
- #define __MOISTURE_SENSOR_CLASS_HPP__
+#ifndef __MOISTURE_SENSOR_CLASS_HPP__
+#define __MOISTURE_SENSOR_CLASS_HPP__
+
+#include <stdint.h>
+#include "Pin.hpp"
+#include "Sensor.hpp"
  
- #include <stdint.h>
- #include "Pin.hpp"
- #include "Sensor.hpp"
+/**
+ * @brief This class collects data from a moisture sensor at a specified pin.
+ * 
+ */
+class MoistureSensor : public Sensor 
+{ 
+public:
+
+   struct LedPins {
+      uint8_t green, yellow, red, blue;
+   };
+
+   /**
+    * @brief Construct a new MoistureSensor object
+    * 
+    * @param pin Which pin to read data from.
+    */
+   MoistureSensor(uint8_t powerPin, uint8_t inputPin, LedPins ledPins, int thresholds[3]);
+
+   ~MoistureSensor() = default;
+
+   /**
+    * @brief Sets pin from constructor to INPUT using ´pinMode´ and 
+    */
+   void init() override;
+
+   /**
+    * @brief Reads data from sensor
+    * 
+    */
+   void read() override;
  
- /**
-  * @brief This class collects data from a moisture sensor at a specified pin.
-  * 
-  */
- class MoistureSensor : public Sensor 
- {
- public:
+private:
+   uint8_t m_powerPin;
+   LedPins m_ledPins;
 
-    struct LedPins {
-        uint8_t green, yellow, red, blue;
-    };
+   int thresholds[3];
+   float percentage = 0;
 
-    /**
-     * @brief Construct a new MoistureSensor object
-     * 
-     * @param pin Which pin to read data from.
-     */
-    MoistureSensor(uint8_t powerPin, uint8_t inputPin, LedPins ledPins, int thresholds[3]);
-
-    ~MoistureSensor() = default;
-
-    /**
-     * @brief Sets pin from constructor to INPUT using ´pinMode´ and 
-     */
-    void init() override;
+};
  
- private:
-    uint8_t m_powerPin;
-    LedPins m_ledPins;
-
-    int thresholds[3];
-    float percentage = 0;
-
- };
- 
- #endif
+#endif
