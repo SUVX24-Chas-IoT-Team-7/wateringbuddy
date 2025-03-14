@@ -22,13 +22,18 @@ void MoistureSensor::init()
     // for (uint8_t *i = &m_ledPins.green; i < &m_ledPins.blue; i++) {
     //     pinMode(*i, OUTPUT);
     // }
-
 }
 
 void MoistureSensor::read() {
     digitalWrite(m_powerPin, HIGH);
 
     this->m_data = getPin()->read(Pin::ANALOG).value_or(0);
+    this->lastMeasurement = millis();
 
     digitalWrite(m_powerPin, LOW);
+}
+
+time_t MoistureSensor::timeSinceLastMeasurement()
+{
+    return this->lastMeasurement;
 }
