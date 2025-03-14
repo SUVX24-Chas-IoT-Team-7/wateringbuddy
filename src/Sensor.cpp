@@ -19,11 +19,17 @@ int Sensor::getData()
 
 void Sensor::read() 
 {
-    this->m_data = this->m_pin->read();
+    this->m_data = this->m_pin->read(false);
 }
 
 void Sensor::init() 
 {
     this->m_pin = new Pin(m_pinNumber, INPUT);
 }
+
+Pin *Sensor::getPin() 
+{
+    return this->m_pin;
+}
+
 
