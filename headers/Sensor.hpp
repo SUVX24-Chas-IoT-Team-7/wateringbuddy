@@ -49,10 +49,12 @@ public:
      */
     virtual void init();
 
+protected:
+    int m_pinNumber;
+
 private:
 
     Pin *m_pin;
-    int m_pinNumber;
 
     int m_data = -1;
 };
