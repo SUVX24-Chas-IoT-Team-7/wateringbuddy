@@ -10,6 +10,8 @@ MoistureSensor::MoistureSensor(uint8_t powerPin, uint8_t inputPin, LedPins ledPi
 
 void MoistureSensor::init() 
 {
+    Sensor::init();
+    
     pinMode(m_powerPin, OUTPUT);
     
     pinMode(this->m_ledPins.blue, OUTPUT);
@@ -21,5 +23,12 @@ void MoistureSensor::init()
     //     pinMode(*i, OUTPUT);
     // }
 
-    pinMode(this->m_pinNumber, INPUT);
+}
+
+void MoistureSensor::read() {
+    digitalWrite(m_powerPin, HIGH);
+
+    this->m_data = getPin()->read(false);
+
+    digitalWrite(m_powerPin, LOW);
 }
