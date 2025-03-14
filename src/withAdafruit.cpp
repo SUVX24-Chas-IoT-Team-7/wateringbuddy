@@ -1,6 +1,5 @@
 #include <Wire.h>
 #include <Adafruit_LiquidCrystal.h>
-
 Adafruit_LiquidCrystal lcd(0x20);
 
 int sensorValue = 0;
