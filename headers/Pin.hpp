@@ -29,7 +29,7 @@ public:
      * @returns std::optional which is empty on error
      * Remember to check before calling value() on the returned result
      */
-    const std::optional<uint8_t> read();
+    const std::optional<uint16_t> read();
 
     /**
      * @brief Writes to pin using digitalWrite()
