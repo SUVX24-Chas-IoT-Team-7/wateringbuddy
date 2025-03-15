@@ -32,6 +32,7 @@ ButtonState Button::getState() {
         m_awaitingLongpress = false;
 
         if (currentTime - m_pressTime < m_longPressTime) {
+            m_lastState = m_currentState;      
             return SHORTPRESS;
         }    
     }
