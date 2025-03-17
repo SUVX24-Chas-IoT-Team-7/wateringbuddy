@@ -48,7 +48,7 @@ public:
     */
    void read() override;
 
-   time_t timeSinceLastMeasurement();
+   time_t getLastMeasurement();
  
 private:
    uint8_t m_powerPin;
