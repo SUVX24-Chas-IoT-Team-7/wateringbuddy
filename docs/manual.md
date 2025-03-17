@@ -38,21 +38,25 @@ The menu can be used by using the buttons provided with the product. By holding 
 #### BUTTON 1:
 
 | Current page |  **Long press**  | **Short press** |
-|  :-:   | :-: | :-: |
+|  :-   | :-: | :-: |
 | When displaying current water level | Turn on continuous measurements |  N/A
 | When displaying "Adjust water level" | Enter adjustment mode for moisture |  N/A
 | When displaying current UV-level | Enter adjustment mode for UV | N/A  
+| When adjusting water level | N/A |  Finish adjusting
+| When adjusting UV level | N/A |  Finish adjusting
+| When measuring realtime water level | N/A |  Finish monitoring
+
 
 #### BUTTON 2:
 
 | Current page |  **Long press**  | **Short press** |
-|  :-:   | :-: | :-: |
+|  :-   | :-: | :-: |
 | When adjusting water level | N/A |  Increase water level tolerance
 | When adjusting UV level | N/A |  Increase UV level tolerance
 
 #### BUTTON 3:
 
 | Current page |  **Long press**  | **Short press** |
-|  :-:   | :-: | :-: |
+|  :-   | :-: | :-: |
 | When adjusting water level | N/A |  Decrease water level tolerance
 | When adjusting UV level | N/A |  Decrease UV level tolerance
