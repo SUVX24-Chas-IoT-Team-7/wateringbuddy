@@ -54,8 +54,8 @@ void setup()
   lcd.backlight();
   
   // initialize buttons
-  button1.init();
 
+  
   // initialize sensors
   pinMode(moisture::powerPin, OUTPUT);
   pinMode(moisture::readingPin, INPUT);
