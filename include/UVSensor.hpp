@@ -1,6 +1,16 @@
 #ifndef UV_SENSOR_HPP
 #define UV_SENSOR_HPP
-
+/**
+ * @brief
+ * UVSensor class to handle UV sensor
+ * @details
+ * This class is used to handle UV sensor. It reads the UV index value from the sensor
+ * It has a method to begin the sensor
+ * It has a method to read the UV index value
+ * @version 0.1
+ * @date 2025-03-14
+ *
+ */
 class UVSensor
 {
 private:
@@ -17,14 +27,11 @@ public:
 
     int readUVIndex()
     {
-        // Read raw analog value
         int rawValue = analogRead(sensorPin);
 
-        // Convert to voltage (0-5V)
         float voltage = rawValue * (5.0 / 1023.0);
 
-        // Convert to UV index (may need calibration for your specific sensor)
-        uvIndex = round(voltage * 10); // Simplified conversion
+        uvIndex = round(voltage * 10);
 
         return uvIndex;
     }

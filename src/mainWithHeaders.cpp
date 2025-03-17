@@ -1,35 +1,47 @@
+
+/**
+ * @file mainWithHeaders.cpp
+ *
+ * @brief   Main file to run the project
+ * @details This file is used to run the project. It reads the moisture and UV index values from the sensors and displays them on the LCD display
+ *          It also reads the button inputs to switch between modes, select thresholds and adjust thresholds
+ *        It also adjusts the LED lights based on the moisture and UV index values
+ *
+ * @version 0.1
+ * @date 2025-03-14
+ *
+ *
+ *
+ */
+
 #include "../include/LCDDisplay.hpp"
 #include "../include/MoistureSensor.hpp"
 #include "../include/UVSensor.hpp"
 #include "../include/ButtonHandler.hpp"
 #include <Arduino.h>
+#include "../include/ThreshholdManager.hpp"
 
-// Create instances of our classes
 LCDDisplay display;
-MoistureSensor moistureSensor(A0, A1); // Power pin, sensor pin
-UVSensor uvSensor(A2);                 // UV sensor pin
-ButtonHandler button(2);               // Button pin
+MoistureSensor moistureSensor(A0, A1);
+UVSensor uvSensor(A2);
+ButtonHandler buttons(2, 3, 4, 5);
+ThresholdManager thresholds;
 
-// Display mode (0 for moisture, 1 for UV)
 int displayMode = 0;
 
 void setup()
 {
-  // Initialize components
   display.begin();
   moistureSensor.begin();
   uvSensor.begin();
-  button.begin();
+  buttons.begin();
 
-  // Initialize LED pins
   for (int pin = 8; pin <= 12; pin++)
   {
     pinMode(pin, OUTPUT);
     digitalWrite(pin, LOW);
   }
-  pinMode(3, OUTPUT);
 
-  // Initial display setup
   display.showTitle("Soil Moisture");
 
   Serial.begin(9600);
@@ -37,104 +49,119 @@ void setup()
 
 void loop()
 {
-  // Check for button press to switch modes
-  if (button.isPressed())
-  {
-    displayMode = !displayMode; // Toggle between 0 and 1
-    display.clear();
-
-    if (displayMode == 0)
-    {
-      display.showTitle("Soil Moisture");
-    }
-    else
-    {
-      display.showTitle("UV Index");
-    }
-  }
-
-  // Read sensor values
   int moisture = moistureSensor.readMoisture();
   int uvIndex = uvSensor.readUVIndex();
 
-  // Update analog output (if needed)
-  analogWrite(3, moistureSensor.getRawValue());
-
-  // Print to serial monitor
   Serial.print("Moisture = ");
   Serial.print(moisture);
   Serial.print(", UV Index = ");
   Serial.println(uvIndex);
 
-  // Reset all LEDs
-  for (int pin = 8; pin <= 12; pin++)
+  if (buttons.isModePressed())
   {
-    digitalWrite(pin, LOW);
-  }
+    if (thresholds.getMode() == 1)
+    {
+      thresholds.toggleMode();
+      display.clear();
 
-  // Update display and LEDs based on current mode
-  if (displayMode == 0)
-  {
-    // Moisture display
-    display.showValue(moisture);
-
-    // Set status and LEDs based on moisture
-    if (moisture < 200)
-    {
-      display.showStatus("Very Wet");
-      digitalWrite(12, HIGH);
-    }
-    else if (moisture < 400)
-    {
-      display.showStatus("Wet");
-      digitalWrite(11, HIGH);
-    }
-    else if (moisture < 600)
-    {
-      display.showStatus("Moist");
-      digitalWrite(10, HIGH);
-    }
-    else if (moisture < 800)
-    {
-      display.showStatus("Dry");
-      digitalWrite(9, HIGH);
+      if (displayMode == 0)
+      {
+        display.showTitle("Soil Moisture");
+      }
+      else
+      {
+        display.showTitle("UV Index");
+      }
     }
     else
     {
-      display.showStatus("Very Dry");
-      digitalWrite(8, HIGH);
+      displayMode = !displayMode;
+      display.clear();
+
+      if (displayMode == 0)
+      {
+        display.showTitle("Soil Moisture");
+      }
+      else
+      {
+        display.showTitle("UV Index");
+      }
     }
+  }
+
+  if (displayMode == 0 && buttons.isSelectPressed() && thresholds.getMode() == 0)
+  {
+    thresholds.toggleMode();
+    display.clear();
+    display.showTitle("Adjust Thresholds");
+  }
+
+  if (thresholds.getMode() == 1)
+  {
+    if (buttons.isSelectPressed())
+    {
+      thresholds.nextThreshold();
+    }
+
+    if (buttons.isUpPressed())
+    {
+      thresholds.increaseThreshold(10);
+    }
+
+    if (buttons.isDownPressed())
+    {
+      thresholds.decreaseThreshold(10);
+    }
+
+    display.showTitle(thresholds.getCurrentThresholdName());
+    display.showValue(thresholds.getCurrentThresholdValue());
   }
   else
   {
-    // UV display
-    display.showValue(uvIndex);
+    for (int pin = 8; pin <= 12; pin++)
+    {
+      digitalWrite(pin, LOW);
+    }
 
-    // Set status and LEDs based on UV index
-    if (uvIndex < 3)
+    if (displayMode == 0)
     {
-      display.showStatus("Low UV");
-      digitalWrite(12, HIGH);
-    }
-    else if (uvIndex < 6)
-    {
-      display.showStatus("Moderate UV");
-      digitalWrite(11, HIGH);
-    }
-    else if (uvIndex < 8)
-    {
-      display.showStatus("High UV");
-      digitalWrite(10, HIGH);
-    }
-    else if (uvIndex < 11)
-    {
-      display.showStatus("Very High UV");
-      digitalWrite(9, HIGH);
+      display.showValue(moisture);
+
+      const char *status = thresholds.getMoistureStatus(moisture);
+      int ledPin = thresholds.getLEDPin(moisture);
+
+      display.showStatus(status);
+      digitalWrite(ledPin, HIGH);
     }
     else
     {
-      display.showStatus("Extreme UV");
-      digitalWrite(8, HIGH);
+      display.showValue(uvIndex);
+
+      if (uvIndex < 3)
+      {
+        display.showStatus("Low UV");
+        digitalWrite(12, HIGH);
+      }
+      else if (uvIndex < 6)
+      {
+        display.showStatus("Moderate UV");
+        digitalWrite(11, HIGH);
+      }
+      else if (uvIndex < 8)
+      {
+        display.showStatus("High UV");
+        digitalWrite(10, HIGH);
+      }
+      else if (uvIndex < 11)
+      {
+        display.showStatus("Very High UV");
+        digitalWrite(9, HIGH);
+      }
+      else
+      {
+        display.showStatus("Extreme UV");
+        digitalWrite(8, HIGH);
+      }
     }
   }
 
