@@ -77,7 +77,8 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 
 ### 2.2 Icke-funktionella krav
 
-- Produkten ska vara lättanvänd.
+- Som användare ska man lätt se att en växt behöver vattnas med hjälp av 4 LED. (Blå - för mycket vatten, Grön - lagom vatten :D, Gul - vattna snart, Röd - akut). Detta är lättigenkännligt eftersom röd, grön, och gul ofta används i likvärdiga situationer.
+- Som en användare ska man lätt förstå vad varje knapp gör, detta kan åstadkommas genom att placera text bredvid varje knapp.
 - Som användare ska man förstå hur man ska sätta ner produkten i en kruka.
 
 ### 2.3 Krav på hårdvara
