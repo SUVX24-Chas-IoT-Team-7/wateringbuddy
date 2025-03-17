@@ -23,9 +23,13 @@ The Arduino will handle most of the tasks by itself but there are a few things t
 
 - The green LED indicates a good amount of water in the soil.
 
+- The yellow LED indicates (between the green and red LED) indicates slightly dry soil.
+
 - The red LED indicates to little water in the soil.
 
 - The blue LED indicates too much water in the soil.
+
+- The yellow LED (separate from the other four) indicates that something is wrong with the amount of light the plant is recieving.
 
 ### Using the Menu
 
