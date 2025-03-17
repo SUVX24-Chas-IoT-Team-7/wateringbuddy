@@ -40,9 +40,9 @@ public:
      * 
      * @param pin Which pin to read data from.
      */
-    Sensor(int pin);
+    Sensor(int pin, PinMode pinMode);
 
-    virtual ~Sensor();
+    // virtual ~Sensor();
 
     /**
      * @brief Sets the ´pin´ to INPUT using ´pinMode´
@@ -52,12 +52,13 @@ public:
     
 protected:
 
-    int m_pinNumber;
+    // int m_pinNumber;
+    Pin m_pin;
     Pin *getPin();
     
     int m_data = -1;
 private:
-    Pin *m_pin;
+//    Pin *m_pin;
 
 };
 

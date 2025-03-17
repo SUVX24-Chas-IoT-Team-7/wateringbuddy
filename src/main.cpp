@@ -1,12 +1,14 @@
-#include <Arduino.h>
+//#include <Arduino.h>
 
 #include "Sensor.hpp"
 #include "Pin.hpp"
+#include "Buttons.hpp"
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
 
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
 
 #define MOISTSENSOR_EXISTS
 
@@ -42,6 +44,7 @@ namespace uvsensor {
   int thresholds[] = {120, 1000};
 } // uvsensor
 
+void printToLcdBasic(LiquidCrystal_I2C& lcd);
 
 void setup()
 {
@@ -49,6 +52,9 @@ void setup()
   // initialize the lcd 
   lcd.init();
   lcd.backlight();
+  
+  // initialize buttons
+
   
   // initialize sensors
   pinMode(moisture::powerPin, OUTPUT);
@@ -67,6 +73,7 @@ void setup()
 }
 
 void loop() {
+
   // read new sensor values
 
   #ifdef MOISTSENSOR_EXISTS
@@ -104,10 +111,16 @@ void loop() {
   }
 
   // print to serial monitor
-  Serial.print("UV: ");
-  Serial.println(moisture::rawReading);
+  //Serial.print("UV: ");
+  //Serial.println(moisture::rawReading);
 
-  // print to lcd
+  printToLcdBasic(lcd);
+  
+
+
+}
+
+void printToLcdBasic(LiquidCrystal_I2C& lcd){
   lcd.setCursor(0, 0);
   lcd.print("Moist:     ");
   lcd.setCursor(7, 0);
@@ -117,12 +130,6 @@ void loop() {
   lcd.print("Light:     ");
   lcd.setCursor(7, 1);
   lcd.print(uvsensor::rawReading);
-
-
-  delay(500); 
-
 }
-
-
 
 
