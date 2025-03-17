@@ -33,7 +33,7 @@ void MoistureSensor::read() {
     digitalWrite(m_powerPin, LOW);
 }
 
-time_t MoistureSensor::timeSinceLastMeasurement()
+time_t MoistureSensor::getLastMeasurement()
 {
     return this->lastMeasurement;
 }
