@@ -9,7 +9,7 @@ This user manual provides step-by-step instructions for effectively using the pr
 The setup process is divided up into steps below:
 
 1. Put the soilmoisture sensor into a pot of choice.
-2. Power on the Arduino using a 5V power supply via USB-C
+2. Power on the Arduino using a 5V power supply via USB-C or using a 9V battery.
 3. Put the UV sensor facing out of the window
 
 ## Operation
