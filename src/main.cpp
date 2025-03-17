@@ -9,7 +9,6 @@
 
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-Button button1(2, INPUT);
 
 #define MOISTSENSOR_EXISTS
 
@@ -74,10 +73,6 @@ void setup()
 }
 
 void loop() {
-  ButtonState testButton1 = button1.getState();
-
-  if (testButton1 == SHORTPRESS) Serial.println("Short Press Detected");
-  if (testButton1 == LONGPRESS) Serial.println("Long Press Detected");
 
   // read new sensor values
 
