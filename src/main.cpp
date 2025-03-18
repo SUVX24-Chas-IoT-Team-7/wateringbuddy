@@ -92,15 +92,16 @@ void loop() {
   int moistPin = moistureStatus.getLEDPin(moisture::percent);
     digitalWrite(moistPin, HIGH);
 
-    pageManager.updateCurrentPages(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
+    pageManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
 
     lcd.clear();
     lcd.setCursor(0,0);
-    lcd.print(pageManager.page1);
+    lcd.print(pageManager.line1);
     lcd.setCursor(0,1);
-    lcd.print(pageManager.page2);
+    lcd.print(pageManager.line2);
 
-    Serial.println(moisture::percent);
+    Serial.println(pageManager.line1);
+    Serial.println(pageManager.line2);
 
   // printToLcdBasic(lcd);
   delay(500);
