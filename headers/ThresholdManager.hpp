@@ -65,7 +65,7 @@ public:
         }
     }
 
-    char* getMoistureString(int moistureValue) const
+    const char* getMoistureString(int moistureValue) const
     {
         if (moistureValue < m_thresholds[DRY])
         {

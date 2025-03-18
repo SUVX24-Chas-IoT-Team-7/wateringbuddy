@@ -7,6 +7,7 @@ PageManagerLCD::PageManagerLCD(ThresholdManager* manager)
     void PageManagerLCD::updateCurrentPages(DisplayMode mode, int sensorValue){
         switch (mode)
         {
+            // TODO: move operations into helper functions
             case MOISTURE_DISPLAY:
             // page 1
             // clear page1 variable

@@ -22,21 +22,12 @@ namespace moisture
   const int bluePin = 9;
   const int ledPins[] = {redPin, yellowPin, greenPin, bluePin};
 
-  //extern int thresholds[] = {25, 50, 70};
-
-  //extern int lastReading = 0;
-  //extern int rawReading = 0;
-  //extern int percent = 0;
-
 } // moisture
 
 namespace uvsensor
 {
   const int readingPin = A2;
-  //extern int rawReading = 0;
-  //extern int prevRawReading = rawReading;
-  //extern float percent = 0;
-  //extern int thresholds[] = {120, 1000};
+
 } // uvsensor
 
   enum DisplayMode
