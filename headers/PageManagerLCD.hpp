@@ -20,7 +20,7 @@ public:
     PageManagerLCD(ThresholdManager* manager);
     char line1[bufferSize];
     char line2[bufferSize];
-    void updateCurrentPage(DisplayMode mode, int sensorValue);
+    void updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2 = 0);
 };
 
 #endif

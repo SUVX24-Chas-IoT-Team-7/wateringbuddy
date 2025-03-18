@@ -27,27 +27,35 @@ PageManagerLCD::PageManagerLCD(ThresholdManager* manager)
         strncat(line, unit, bufferSize - strlen(line) - 1);
     }
 
-    void PageManagerLCD::updateCurrentPage(DisplayMode mode, int sensorValue){
+    void PageManagerLCD::updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2){
         switch (mode)
         {
-            // TODO: move operations into helper functions
             case MOISTURE_DISPLAY:
-            // line 1
-//            clearBuffer(line1);
             composeLine(line1, "Moist: ", sensorValue, "%");
-            // line 2
-//            clearBuffer(line2);
             composeLine(line2, m_manager->getMoistureString(sensorValue));
             break;
-        case LIGHT_DISPLAY:
+            
+            case LIGHT_DISPLAY:
+            composeLine(line1, "Light: ", sensorValue);
+            composeLine(line2, "UV: ", sensorValue2);
             break;
-        case MOISTURE_TRESHOLD_DISPLAY:
+            
+            case MOISTURE_TRESHOLD_DISPLAY:
+            composeLine(line1, "Moisture Center");
+            composeLine(line2, "Value: ", sensorValue, "%");
             break;
-        case WATERING_DISPLAY:
+            
+            case WATERING_DISPLAY:
+            composeLine(line1, "Watering Mode");
+            composeLine(line2, "Moist: ", sensorValue, "%");
             break;
-        case ADJUST_MOISTURE_DISPLAY:
+            
+            case ADJUST_MOISTURE_DISPLAY:
+            composeLine(line1, "Set Center Value");
+            composeLine(line2, "       ", sensorValue, "%");
             break;
-        default:
+        
+            default:
             break;
         }
     }
