@@ -35,5 +35,18 @@ enum thresholdNames {
     int thresholds[] = {120, 1000};
   } // uvsensor
   
+  namespace displayMode
+{
+
+  enum DisplayMode
+  {
+    MOISTURE_DISPLAY,
+    LIGHT_DISPLAY,
+    MOISTURE_TRESHOLD_DISPLAY,
+    WATERING_DISPLAY,
+    ADJUST_MOISTURE_DISPLAY
+
+  };
+} // displayMode
 
 #endif
