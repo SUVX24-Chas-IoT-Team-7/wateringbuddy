@@ -27,6 +27,14 @@ PageManagerLCD::PageManagerLCD(ThresholdManager* manager)
         strncat(line, unit, bufferSize - strlen(line) - 1);
     }
 
+    const char* PageManagerLCD::getLine1(){
+        return line1;
+    }
+
+    const char* PageManagerLCD::getLine2(){
+        return line2;
+    }
+
     void PageManagerLCD::updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2){
         switch (mode)
         {

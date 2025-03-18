@@ -93,15 +93,16 @@ void loop() {
     digitalWrite(moistPin, HIGH);
 
     pageManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
+    //pageManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
 
     lcd.clear();
     lcd.setCursor(0,0);
-    lcd.print(pageManager.line1);
+    lcd.print(pageManager.getLine1());
     lcd.setCursor(0,1);
-    lcd.print(pageManager.line2);
+    lcd.print(pageManager.getLine2());
 
-    Serial.println(pageManager.line1);
-    Serial.println(pageManager.line2);
+    Serial.println(pageManager.getLine1());
+    Serial.println(pageManager.getLine2());
 
   // printToLcdBasic(lcd);
   delay(500);
