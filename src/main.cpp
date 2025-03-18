@@ -3,16 +3,36 @@
 #include "Sensor.hpp"
 #include "Pin.hpp"
 #include "Buttons.hpp"
-#include "ThresholdManager.hpp"
+//#include "ThresholdManager.hpp"
+#include "PageManagerLCD.hpp"
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
+
+namespace moisture
+{
+  int thresholds[] = {25, 50, 70};
+
+  int lastReading = 0;
+  int rawReading = 0;
+  int percent = 0;
+
+} // moisture
+
+namespace uvsensor
+{
+  int rawReading = 0;
+  int prevRawReading = rawReading;
+  float percent = 0;
+  int thresholds[] = {120, 1000};
+} // uvsensor
 
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 
 
 ThresholdManager moistureStatus;
+PageManagerLCD pageManager(&moistureStatus);
 
 void printToLcdBasic(LiquidCrystal_I2C& lcd);
 
@@ -72,15 +92,24 @@ void loop() {
   int moistPin = moistureStatus.getLEDPin(moisture::percent);
     digitalWrite(moistPin, HIGH);
 
+    pageManager.updateCurrentPages(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
 
-  printToLcdBasic(lcd);
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print(pageManager.page1);
+    lcd.setCursor(0,1);
+    lcd.print(pageManager.page2);
+
+    Serial.println(moisture::percent);
+
+  // printToLcdBasic(lcd);
   delay(500);
 
 }
 
 void printToLcdBasic(LiquidCrystal_I2C& lcd){
   lcd.setCursor(0, 0);
-  lcd.print("Moist:     ");
+  lcd.print("Moist: ");
   lcd.setCursor(7, 0);
   lcd.print(moisture::percent);
   lcd.print("%");

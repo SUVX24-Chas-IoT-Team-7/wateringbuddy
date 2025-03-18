@@ -1,6 +1,8 @@
 #ifndef MOIST_CONSTANTS_AND_ENUMS_HPP
 #define MOIST_CONSTANTS_AND_ENUMS_HPP
 
+#include <Arduino.h>
+
 enum thresholdNames
 {
   DRY,
@@ -20,25 +22,22 @@ namespace moisture
   const int bluePin = 9;
   const int ledPins[] = {redPin, yellowPin, greenPin, bluePin};
 
-  int thresholds[] = {25, 50, 70};
+  //extern int thresholds[] = {25, 50, 70};
 
-  int lastReading = 0;
-  int rawReading = 0;
-  int percent = 0;
+  //extern int lastReading = 0;
+  //extern int rawReading = 0;
+  //extern int percent = 0;
 
 } // moisture
 
 namespace uvsensor
 {
   const int readingPin = A2;
-  int rawReading = 0;
-  int prevRawReading = rawReading;
-  float percent = 0;
-  int thresholds[] = {120, 1000};
+  //extern int rawReading = 0;
+  //extern int prevRawReading = rawReading;
+  //extern float percent = 0;
+  //extern int thresholds[] = {120, 1000};
 } // uvsensor
-
-namespace displayMode
-{
 
   enum DisplayMode
   {
@@ -47,7 +46,6 @@ namespace displayMode
     MOISTURE_TRESHOLD_DISPLAY,
     WATERING_DISPLAY,
     ADJUST_MOISTURE_DISPLAY
-
   };
-} // displayMode
+
 #endif
