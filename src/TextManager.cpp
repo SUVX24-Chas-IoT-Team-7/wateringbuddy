@@ -1,20 +1,20 @@
-#include "PageManagerLCD.hpp"
+#include "TextManager.hpp"
 
-PageManagerLCD::PageManagerLCD(ThresholdManager* manager) 
+TextManager::TextManager(ThresholdManager* manager) 
     : m_manager { manager } {}
 
 
-    void PageManagerLCD::clearBuffer(char* buffer) {
+    void TextManager::clearBuffer(char* buffer) {
         memset(buffer, 0, bufferSize);
     }
 
-    void PageManagerLCD::composeLine(char* line, const char* text) {
+    void TextManager::composeLine(char* line, const char* text) {
         // clear line
         clearBuffer(line);
         // add text 
         strncat(line, text, bufferSize - strlen(line) - 1);
     }
-    void PageManagerLCD::composeLine(char* line, const char* text, int value, const char* unit) {
+    void TextManager::composeLine(char* line, const char* text, int value, const char* unit) {
         // clear line
         clearBuffer(line);
         // add text 
@@ -27,15 +27,15 @@ PageManagerLCD::PageManagerLCD(ThresholdManager* manager)
         strncat(line, unit, bufferSize - strlen(line) - 1);
     }
 
-    const char* PageManagerLCD::getLine1(){
+    const char* TextManager::getLine1(){
         return line1;
     }
 
-    const char* PageManagerLCD::getLine2(){
+    const char* TextManager::getLine2(){
         return line2;
     }
 
-    void PageManagerLCD::updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2){
+    void TextManager::updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2){
         switch (mode)
         {
             case MOISTURE_DISPLAY:

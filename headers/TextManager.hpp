@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 
-class PageManagerLCD
+class TextManager
 {
 private:
     ThresholdManager* m_manager;
@@ -19,7 +19,7 @@ private:
     void composeLine(char* line, const char* text, int value, const char* unit = "");
 
 public:
-    PageManagerLCD(ThresholdManager* manager);
+    TextManager(ThresholdManager* manager);
     const char* getLine1();
     const char* getLine2();
     void updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2 = 0);
