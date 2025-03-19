@@ -57,7 +57,6 @@ private:
    uint8_t m_powerPin;
    LedPins m_ledPins;
 
-   int thresholds[3];
    float percentage = 0;
 
    time_t lastMeasurement;
