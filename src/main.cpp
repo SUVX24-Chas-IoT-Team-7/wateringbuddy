@@ -20,8 +20,6 @@ MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPi
 
 DisplayMode activeMode { UPDATE_DISPLAY };
 
-void printToLcdBasic(LiquidCrystal_I2C& lcd);
-
 void setup()
 {
   
@@ -46,7 +44,8 @@ void loop() {
 
 
   pageController.processToggleButton();
-
+  pageController.checkDisplayTimer();
+  
   // read new sensor values
   if (pageController.sensorTimer.timeToUpdate()) {
     moistureSensor.read();
@@ -57,7 +56,6 @@ void loop() {
     if (pageController.screenIsActive() && activeMode != pageController.getCurrentMode()) {
 
       textManager.updateCurrentPage(pageController.getCurrentMode(), moistureSensor.getPercentage());
-      //textManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
       
       lcd.clear();
       lcd.setCursor(0,0);
@@ -70,9 +68,11 @@ void loop() {
 
       activeMode = pageController.getCurrentMode();
     }
+    if (!pageController.screenIsActive()) {
+      Serial.println("Clear screen");
+      lcd.clear();
+    }
 
-  // printToLcdBasic(lcd);
-  // delay(500);
 
 }
 

@@ -24,13 +24,14 @@ private:
     bool m_screenIsActive{ true };
 public:
     PageController(int togglePin, int decrementPin, int incrementPin);
-    Timer displayTimer;
-    Timer sensorTimer { 5 * 1000 };
+    Timer displayTimer { 20 * 1000 };
+    Timer sensorTimer { 3 * 1000 };
     void init();
     void processToggleButton();
     bool decrementIsPressed();
     bool incrementIsPressed();
     bool screenIsActive();
+    void checkDisplayTimer();
     DisplayMode getCurrentMode();
 };
 
