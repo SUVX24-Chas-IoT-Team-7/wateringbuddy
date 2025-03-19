@@ -1,6 +1,6 @@
 #ifndef TIMER_HPP
 #define TIMER_HPP
-#include "PageController.hpp"
+#include <Arduino.h>
 // Skapa en timer för att stänga av LCD efter 10 sekunder
 // Skapa en timer åt WATERING_DISPLAY så att den uppdateras konstant medans dem andra sidorna inte gör det.
 class Timer
