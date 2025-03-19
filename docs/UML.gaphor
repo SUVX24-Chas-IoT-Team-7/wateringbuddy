@@ -876,6 +876,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="c95e0e52-fff4-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="4d36a6b2-fff5-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="702109ba-fff5-11ef-8b65-58cdc9d6ec65"/>
+<ref refid="1c1fc8ce-04aa-11f0-bb2f-58cdc9d6ec65"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -883,6 +884,8 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="8714230e-fff6-11ef-8b65-58cdc9d6ec65"/>
 <ref refid="53764ca0-00d4-11f0-ab3a-58cdc9d6ec65"/>
+<ref refid="df1a675e-04a9-11f0-bb2f-58cdc9d6ec65"/>
+<ref refid="e6478a8e-04a9-11f0-bb2f-58cdc9d6ec65"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -909,16 +912,16 @@ existing classes or even new classes with specific responsibilities.</val>
 </UML:Class>
 <UML:ClassItem id="93737aac-fff4-11ef-8b65-58cdc9d6ec65">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1024.6755170355177, 170.95999248685203)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1095.167711808537, 170.9599924868519)</val>
 </matrix>
 <top-left>
-<val>(0.0, 0.0)</val>
+<val>(-70.49219477301926, -6.720567205989141)</val>
 </top-left>
 <width>
-<val>527.0</val>
+<val>770.0</val>
 </width>
 <height>
-<val>220.0</val>
+<val>260.0</val>
 </height>
 <diagram>
 <ref refid="6627c3e0-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -1056,27 +1059,15 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
 </class_>
 <name>
-<val>thresholds</val>
+<val>- thresholdManager: ThresholdManager *</val>
 </name>
-<typeValue>
-<val>int</val>
-</typeValue>
-<upperValue>
-<val>3</val>
-</upperValue>
-<upperValue>
-<val>3</val>
-</upperValue>
-<visibility>
-<val>private</val>
-</visibility>
 </UML:Property>
 <UML:Property id="702109ba-fff5-11ef-8b65-58cdc9d6ec65">
 <class_>
 <ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
 </class_>
 <name>
-<val>percent</val>
+<val>percentage</val>
 </name>
 <typeValue>
 <val>float</val>
@@ -1105,7 +1096,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, 853.9137121859152, 317.9113448534937)</val>
 </matrix>
 <points>
-<val>[(170.76180484960253, -64.98327371377908), (73.49934370010817, -64.98327371377911), (73.49934370010828, 6.328080427369173)]</val>
+<val>[(170.76180484960253, -64.98327371377911), (73.49934370010817, -64.98327371377911), (73.49934370010828, 6.328080427369173)]</val>
 </points>
 <head-connection>
 <ref refid="93737aac-fff4-11ef-8b65-58cdc9d6ec65"/>
@@ -1139,79 +1130,9 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
 </class_>
 <name>
-<val>MoistureSensor</val>
+<val>+ MoistureSensor(in power: int, in pin: int, in ledPins: DisplayLeds, in ThresholdManager (ptr) thresholdManager)</val>
 </name>
-<ownedParameter>
-<reflist>
-<ref refid="27d64034-fff6-11ef-8b65-58cdc9d6ec65"/>
-<ref refid="27d8e50a-fff6-11ef-8b65-58cdc9d6ec65"/>
-<ref refid="27db1406-fff6-11ef-8b65-58cdc9d6ec65"/>
-<ref refid="27dd4f3c-fff6-11ef-8b65-58cdc9d6ec65"/>
-</reflist>
-</ownedParameter>
 </UML:Operation>
-<UML:Parameter id="27d64034-fff6-11ef-8b65-58cdc9d6ec65">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>power</val>
-</name>
-<ownerFormalParam>
-<ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
-</ownerFormalParam>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="27d8e50a-fff6-11ef-8b65-58cdc9d6ec65">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>pin</val>
-</name>
-<ownerFormalParam>
-<ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
-</ownerFormalParam>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="27db1406-fff6-11ef-8b65-58cdc9d6ec65">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>ledPins</val>
-</name>
-<ownerFormalParam>
-<ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
-</ownerFormalParam>
-<typeValue>
-<val>DisplayLeds</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="27dd4f3c-fff6-11ef-8b65-58cdc9d6ec65">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>thresholds</val>
-</name>
-<ownerFormalParam>
-<ref refid="06f3f6ea-fff6-11ef-8b65-58cdc9d6ec65"/>
-</ownerFormalParam>
-<typeValue>
-<val>int</val>
-</typeValue>
-<upperValue>
-<val>3</val>
-</upperValue>
-<upperValue>
-<val>3</val>
-</upperValue>
-</UML:Parameter>
 <UML:Operation id="8714230e-fff6-11ef-8b65-58cdc9d6ec65">
 <class_>
 <ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
@@ -1563,7 +1484,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, 1028.9796073231282, 193.55850563764608)</val>
 </matrix>
 <points>
-<val>[(-172.36177092907963, -3.253935102588656), (-4.3040902876105065, -3.2539351025886276)]</val>
+<val>[(-172.36177092907963, -3.253935102588656), (-4.3040902876105065, 0.5720664836061076)]</val>
 </points>
 <head-connection>
 <ref refid="7989569c-ffeb-11ef-8b65-58cdc9d6ec65"/>
@@ -2005,5 +1926,67 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>boolean</val>
 </typeValue>
 </UML:Parameter>
+<UML:Operation id="df1a675e-04a9-11f0-bb2f-58cdc9d6ec65">
+<class_>
+<ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
+</class_>
+<name>
+<val>getPercentage</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="df1b6370-04a9-11f0-bb2f-58cdc9d6ec65"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="df1b6370-04a9-11f0-bb2f-58cdc9d6ec65">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="df1a675e-04a9-11f0-bb2f-58cdc9d6ec65"/>
+</ownerFormalParam>
+<typeValue>
+<val>float</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="e6478a8e-04a9-11f0-bb2f-58cdc9d6ec65">
+<class_>
+<ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
+</class_>
+<name>
+<val>getLastMeasurement</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="e64858c4-04a9-11f0-bb2f-58cdc9d6ec65"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="e64858c4-04a9-11f0-bb2f-58cdc9d6ec65">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="e6478a8e-04a9-11f0-bb2f-58cdc9d6ec65"/>
+</ownerFormalParam>
+<typeValue>
+<val>time_t</val>
+</typeValue>
+</UML:Parameter>
+<UML:Property id="1c1fc8ce-04aa-11f0-bb2f-58cdc9d6ec65">
+<class_>
+<ref refid="93734a5a-fff4-11ef-8b65-58cdc9d6ec65"/>
+</class_>
+<name>
+<val>lastMeasurement</val>
+</name>
+<typeValue>
+<val>time_t</val>
+</typeValue>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Property>
 </model>
 </gaphor>
