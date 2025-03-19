@@ -32,6 +32,7 @@ namespace uvsensor
 
   enum DisplayMode
   {
+    UPDATE_DISPLAY,
     MOISTURE_DISPLAY,
     LIGHT_DISPLAY,
     MOISTURE_TRESHOLD_DISPLAY,

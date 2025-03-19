@@ -70,3 +70,7 @@ bool PageController::incrementIsPressed(){
 DisplayMode PageController::getCurrentMode(){
     return m_currentMode;
 }
+
+bool PageController::screenIsActive(){
+    return m_screenIsActive;
+}

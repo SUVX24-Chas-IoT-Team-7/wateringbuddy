@@ -13,6 +13,7 @@
 
 #include "Buttons.hpp"
 #include "ThresholdManager.hpp"
+#include "Timer.hpp"
 
 class PageController {
 private:
@@ -20,12 +21,16 @@ private:
     Button m_buttonDecrement;    
     Button m_buttonIncrement;
     DisplayMode m_currentMode;
+    bool m_screenIsActive{ true };
 public:
     PageController(int togglePin, int decrementPin, int incrementPin);
+    Timer displayTimer;
+    Timer sensorTimer { 5 * 1000 };
     void init();
     void processToggleButton();
     bool decrementIsPressed();
     bool incrementIsPressed();
+    bool screenIsActive();
     DisplayMode getCurrentMode();
 };
 

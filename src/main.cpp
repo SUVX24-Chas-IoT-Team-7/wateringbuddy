@@ -18,6 +18,8 @@ PageController pageController(pushButtons::TglPin, pushButtons::DecrPin, pushBut
 
 MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
 
+DisplayMode activeMode { UPDATE_DISPLAY };
+
 void printToLcdBasic(LiquidCrystal_I2C& lcd);
 
 void setup()
@@ -42,26 +44,30 @@ void setup()
 
 void loop() {
 
+
   pageController.processToggleButton();
 
   // read new sensor values
+  if (pageController.sensorTimer.timeToUpdate()) {
+    moistureSensor.read();
+    activeMode = UPDATE_DISPLAY;
+    pageController.sensorTimer.reset();
+  }
 
+    if (pageController.screenIsActive() && activeMode != pageController.getCurrentMode()) {
 
-  // Apply power to the soil moisture sensor
-  moistureSensor.read();
-
-
-    textManager.updateCurrentPage(pageController.getCurrentMode(), moistureSensor.getPercentage());
-    //textManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
-
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print(textManager.getLine1());
-    lcd.setCursor(0,1);
-    lcd.print(textManager.getLine2());
-
-    Serial.println(textManager.getLine1());
-    Serial.println(textManager.getLine2());
+      textManager.updateCurrentPage(pageController.getCurrentMode(), moistureSensor.getPercentage());
+      //textManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
+      
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print(textManager.getLine1());
+      lcd.setCursor(0,1);
+      lcd.print(textManager.getLine2());
+      
+      Serial.println(textManager.getLine1());
+      Serial.println(textManager.getLine2());
+    }
 
   // printToLcdBasic(lcd);
   // delay(500);
