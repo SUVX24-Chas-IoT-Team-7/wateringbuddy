@@ -5,34 +5,16 @@
 #include "Buttons.hpp"
 //#include "ThresholdManager.hpp"
 #include "PageManagerLCD.hpp"
+#include "MoistureSensor.hpp"
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
-
-namespace moisture
-{
-  int thresholds[] = {25, 50, 70};
-
-  int lastReading = 0;
-  int rawReading = 0;
-  int percent = 0;
-
-} // moisture
-
-namespace uvsensor
-{
-  int rawReading = 0;
-  int prevRawReading = rawReading;
-  float percent = 0;
-  int thresholds[] = {120, 1000};
-} // uvsensor
-
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
-
-
 
 ThresholdManager moistureStatus;
 PageManagerLCD pageManager(&moistureStatus);
+
+MoistureSensor moistureSensor;
 
 void printToLcdBasic(LiquidCrystal_I2C& lcd);
 
@@ -43,18 +25,10 @@ void setup()
   lcd.init();
   lcd.backlight();
   
-  // initialize buttons
-
+  // TODO: initialize buttons
   
   // initialize sensors
-  pinMode(moisture::powerPin, OUTPUT);
-  pinMode(moisture::readingPin, INPUT);
-  pinMode(uvsensor::readingPin, INPUT);
-
-  // set ledPins to OUTPUT
-  for (auto pin : moisture::ledPins) {
-    pinMode(pin, OUTPUT);
-  }
+  moistureSensor = { A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
 
   // enable Serial monitoring
   Serial.begin(9600);
@@ -69,54 +43,22 @@ void loop() {
 
 
   // Apply power to the soil moisture sensor
-  digitalWrite(moisture::powerPin, HIGH);
-  delay(10); // Wait for 10 millisecond(s)
+  moistureSensor.read();
 
-  moisture::lastReading = moisture::rawReading;
-  moisture::rawReading = analogRead(moisture::readingPin);
+  pageManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moistureSensor.getPercentage());
+  //pageManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
 
-  // Turn off the sensor to reduce metal corrosion
-  // over time
-  digitalWrite(moisture::powerPin, LOW);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(pageManager.getLine1());
+  lcd.setCursor(0,1);
+  lcd.print(pageManager.getLine2());
 
-  
-  //calculate percent from raw value
-  moisture::percent = map(moisture::rawReading, 1, 1023, 100, 0);
-
-  uvsensor::rawReading = analogRead(uvsensor::readingPin);
-
-  // update moisture LEDs
-  for (auto pin : moisture::ledPins) {
-    digitalWrite(pin, LOW);
-  }
-  int moistPin = moistureStatus.getLEDPin(moisture::percent);
-    digitalWrite(moistPin, HIGH);
-
-    pageManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
-    //pageManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
-
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print(pageManager.getLine1());
-    lcd.setCursor(0,1);
-    lcd.print(pageManager.getLine2());
-
-    Serial.println(pageManager.getLine1());
-    Serial.println(pageManager.getLine2());
+  Serial.println(pageManager.getLine1());
+  Serial.println(pageManager.getLine2());
 
   // printToLcdBasic(lcd);
   delay(500);
 
 }
-
-void printToLcdBasic(LiquidCrystal_I2C& lcd){
-  lcd.setCursor(0, 0);
-  lcd.print("Moist: ");
-  lcd.setCursor(7, 0);
-  lcd.print(moisture::percent);
-  lcd.print("%");
-  lcd.setCursor(0, 1);
-  lcd.print(moistureStatus.getMoistureString(moisture::percent));
-}
-
 
