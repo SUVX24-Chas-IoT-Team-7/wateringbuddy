@@ -14,7 +14,7 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars
 ThresholdManager moistureStatus;
 PageManagerLCD pageManager(&moistureStatus);
 
-MoistureSensor moistureSensor;
+MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
 
 void printToLcdBasic(LiquidCrystal_I2C& lcd);
 
@@ -28,7 +28,7 @@ void setup()
   // TODO: initialize buttons
   
   // initialize sensors
-  moistureSensor = { A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
+  moistureSensor.init();
 
   // enable Serial monitoring
   Serial.begin(9600);
