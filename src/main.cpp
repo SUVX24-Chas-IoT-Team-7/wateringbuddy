@@ -46,7 +46,7 @@ void loop() {
   moistureSensor.read();
 
 
-    textManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moisture::percent);
+    textManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moistureSensor.getPercentage());
     //textManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
 
     lcd.clear();
