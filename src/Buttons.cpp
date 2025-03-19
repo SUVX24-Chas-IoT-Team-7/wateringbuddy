@@ -10,8 +10,8 @@ bool Button::releaseDetected(){
     return (!m_currentState && m_lastState);
 }
 
-Button::Button(int pin, PinMode pinMode) 
-    : m_longPressTime { 1000 }, m_pin { pin, pinMode } {}
+Button::Button(int pin, PinMode pinMode, time_t longPressTime) 
+    : m_longPressTime { longPressTime }, m_pin { pin, pinMode } {}
 
 void Button::init() {
     m_pin.init();

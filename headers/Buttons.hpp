@@ -50,8 +50,9 @@ public:
      * @brief Construct a new Button object
      * 
      * @param pin Number of the pin the button is connected to
+     * @param longPressTime defaults to 1000 ms
      */
-    Button(int pin, PinMode);
+    Button(int pin, PinMode, time_t longPressTime = 1000);
     /**
      * @brief Run in setup() to set correct pinMode
      * 
