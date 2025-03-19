@@ -1680,7 +1680,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </UML:Parameter>
 <UML:Class id="096f7b32-00b5-11f0-b1fd-58cdc9d6ec65">
 <name>
-<val>DisplayLCD</val>
+<val>PageManagerLCD</val>
 </name>
 <ownedAttribute>
 <reflist>
@@ -1735,7 +1735,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="096f7b32-00b5-11f0-b1fd-58cdc9d6ec65"/>
 </class_>
 <name>
-<val>DisplayLCD</val>
+<val>PageManagerLCD</val>
 </name>
 </UML:Operation>
 <UML:Operation id="337a8c14-00b5-11f0-b1fd-58cdc9d6ec65">
