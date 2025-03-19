@@ -39,4 +39,10 @@ namespace uvsensor
     ADJUST_MOISTURE_DISPLAY
   };
 
+namespace pushButtons {
+   const int TglPin = 2;
+   const int DecrPin = 3;
+   const int IncrPin = 4;
+}
+
 #endif

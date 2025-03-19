@@ -1,5 +1,17 @@
 #include "PageController.hpp"
 
+PageController::PageController(int togglePin, int decrementPin, int incrementPin)
+    : m_buttonToggleMode { togglePin, INPUT }, 
+      m_buttonDecrement { decrementPin, INPUT },
+      m_buttonIncrement { incrementPin, INPUT },
+      m_currentMode { MOISTURE_DISPLAY }  {}
+
+void PageController::init() {
+    m_buttonToggleMode.init();
+    m_buttonDecrement.init();
+    m_buttonIncrement.init();
+}
+
 void PageController::processToggleButton(){
 
     ButtonState currentState = m_buttonToggleMode.getState();
@@ -54,12 +66,6 @@ bool PageController::decrementIsPressed(){
 bool PageController::incrementIsPressed(){
     return (m_buttonIncrement.getState() == SHORTPRESS);
 }
-
-PageController::PageController(int togglePin, int decrementPin, int incrementPin)
-    : m_buttonToggleMode { togglePin, INPUT }, 
-      m_buttonDecrement { decrementPin, INPUT },
-      m_buttonIncrement { incrementPin, INPUT },
-      m_currentMode { MOISTURE_DISPLAY }  {}
 
 DisplayMode PageController::getCurrentMode(){
     return m_currentMode;

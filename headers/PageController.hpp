@@ -22,6 +22,7 @@ private:
     DisplayMode m_currentMode;
 public:
     PageController(int togglePin, int decrementPin, int incrementPin);
+    void init();
     void processToggleButton();
     bool decrementIsPressed();
     bool incrementIsPressed();

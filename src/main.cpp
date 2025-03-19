@@ -6,6 +6,7 @@
 //#include "ThresholdManager.hpp"
 #include "MoistureSensor.hpp"
 #include "TextManager.hpp"
+#include "PageController.hpp"
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
@@ -13,6 +14,7 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars
 
 ThresholdManager moistureStatus;
 TextManager textManager(&moistureStatus);
+PageController pageController(pushButtons::TglPin, pushButtons::DecrPin, pushButtons::IncrPin);
 
 MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
 
@@ -26,7 +28,8 @@ void setup()
   lcd.backlight();
   
   // TODO: initialize buttons
-  
+  pageController.init();
+
   // initialize sensors
   moistureSensor.init();
 
@@ -39,6 +42,8 @@ void setup()
 
 void loop() {
 
+  pageController.processToggleButton();
+
   // read new sensor values
 
 
@@ -46,7 +51,7 @@ void loop() {
   moistureSensor.read();
 
 
-    textManager.updateCurrentPage(DisplayMode::MOISTURE_DISPLAY, moistureSensor.getPercentage());
+    textManager.updateCurrentPage(pageController.getCurrentMode(), moistureSensor.getPercentage());
     //textManager.updateCurrentPage(DisplayMode::LIGHT_DISPLAY, uvsensor::rawReading, 200);
 
     lcd.clear();
@@ -59,7 +64,7 @@ void loop() {
     Serial.println(textManager.getLine2());
 
   // printToLcdBasic(lcd);
-  delay(500);
+  // delay(500);
 
 }
 
