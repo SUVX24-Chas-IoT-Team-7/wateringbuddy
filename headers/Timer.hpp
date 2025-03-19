@@ -1,18 +1,37 @@
-#ifndef TIME_SCHEDULER_HPP
-#define TIME_SCHEDULER_HPP
-#include <PageController.hpp>
+#ifndef TIMER_HPP
+#define TIMER_HPP
+#include "PageController.hpp"
 // Skapa en timer för att stänga av LCD efter 10 sekunder
 // Skapa en timer åt WATERING_DISPLAY så att den uppdateras konstant medans dem andra sidorna inte gör det.
-class Scheduler
+class Timer
 {
 private:
-    /* data */
+    unsigned long _timerDuration;
+    unsigned long _lastUpdate;
+
 public:
-    Scheduler(/* args */);
+    Timer(unsigned long timerDuration = 10000);
+
+    void reset()
+    {
+        _lastUpdate = millis();
+    }
+
+    bool timeToUpdate()
+    {
+        return (_lastUpdate - millis() > _timerDuration);
+    }
+
+    void setDuration(unsigned long duration = 10000)
+    {
+        _timerDuration = duration;
+    }
 };
 
-Scheduler::Scheduler(/* args */)
+Timer::Timer(unsigned long timerDuration)
+    : _timerDuration(timerDuration)
 {
+    reset();
 }
 
-#endif // TIME_SCHEDULER_HPP
+#endif // TIME_Timer_HPP
