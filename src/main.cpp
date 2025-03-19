@@ -67,6 +67,8 @@ void loop() {
       
       Serial.println(textManager.getLine1());
       Serial.println(textManager.getLine2());
+
+      activeMode = pageController.getCurrentMode();
     }
 
   // printToLcdBasic(lcd);
