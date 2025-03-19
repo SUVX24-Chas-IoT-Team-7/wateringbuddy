@@ -3,7 +3,6 @@
 #include "Sensor.hpp"
 #include "Pin.hpp"
 #include "Buttons.hpp"
-//#include "ThresholdManager.hpp"
 #include "MoistureSensor.hpp"
 #include "TextManager.hpp"
 #include "PageController.hpp"
@@ -27,7 +26,7 @@ void setup()
   lcd.init();
   lcd.backlight();
   
-  // TODO: initialize buttons
+  // initialize the pageController buttons
   pageController.init();
 
   // initialize sensors
@@ -44,8 +43,28 @@ void loop() {
 
 
   pageController.processToggleButton();
-  pageController.checkDisplayTimer();
+
+  // Removed Clear Screen for debugging purposes
+  // pageController.checkDisplayTimer();
+
+  bool incrementIsPressed = pageController.incrementIsPressed();  
+  bool decrementIsPressed = pageController.decrementIsPressed();
+
+  if ((pageController.getCurrentMode() == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
+    if (incrementIsPressed) Serial.println("Increment is pressed");
+    if (decrementIsPressed) Serial.println("Decrement is pressed");
+
+    if (incrementIsPressed) {
+      moistureStatus.increaseThreshold();
+      activeMode = UPDATE_DISPLAY;
+    }
+    if (decrementIsPressed) {
+      moistureStatus.decreaseThreshold();
+      activeMode = UPDATE_DISPLAY;
+    }
   
+  }
+
   // read new sensor values
   if (pageController.sensorTimer.timeToUpdate()) {
     moistureSensor.read();
@@ -68,8 +87,8 @@ void loop() {
 
       activeMode = pageController.getCurrentMode();
     }
+    // Just do this once. How to fix?
     if (!pageController.screenIsActive()) {
-      Serial.println("Clear screen");
       lcd.clear();
     }
 
