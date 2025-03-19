@@ -1,5 +1,5 @@
 /**
- * @file buttonHandler.hpp
+ * @file PageController.hpp
  * @author Erik Dahl (erik@iunderlandet.se) & John Collinder
  * @brief Class manages buttons and the current state
  * @version 0.1
@@ -8,20 +8,20 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#ifndef __IOT_BUTTON_HANDLER_CLASS_HPP__
-#define __IOT_BUTTON_HANDLER_CLASS_HPP__
+#ifndef __IOT_PAGE_CONTROLLER_CLASS_HPP__
+#define __IOT_PAGE_CONTROLLER_CLASS_HPP__
 
 #include "Buttons.hpp"
 #include "ThresholdManager.hpp"
 
-class ButtonHandler {
+class PageController {
 private:
     Button m_buttonToggleMode;
     Button m_buttonDecrement;    
     Button m_buttonIncrement;
     DisplayMode m_currentMode;
 public:
-    ButtonHandler(int togglePin, int decrementPin, int incrementPin);
+    PageController(int togglePin, int decrementPin, int incrementPin);
     void processToggleButton();
     bool decrementIsPressed();
     bool incrementIsPressed();
