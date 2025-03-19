@@ -10,7 +10,11 @@ private:
     unsigned long _lastUpdate;
 
 public:
-    Timer(unsigned long timerDuration = 10000);
+    Timer(unsigned long timerDuration = 10000)  
+        : _timerDuration(timerDuration)
+    {
+        reset();
+    }
 
     void reset()
     {
@@ -28,10 +32,5 @@ public:
     }
 };
 
-Timer::Timer(unsigned long timerDuration)
-    : _timerDuration(timerDuration)
-{
-    reset();
-}
 
 #endif // TIME_Timer_HPP
