@@ -1,6 +1,6 @@
 /**
  * @file buttonHandler.hpp
- * @author Erik Dahl (erik@iunderlandet.se)
+ * @author Erik Dahl (erik@iunderlandet.se) & John Collinder
  * @brief Class manages buttons and the current state
  * @version 0.1
  * @date 2025-03-18
@@ -20,12 +20,11 @@ private:
     Button m_buttonDecrement;    
     Button m_buttonIncrement;
     DisplayMode m_currentMode;
-    void processButtonToggle();
-    bool processButtonDecrement();
-    bool processButtonIncrement();
 public:
     ButtonHandler(int togglePin, int decrementPin, int incrementPin);
-    void updateStates();
+    void processToggleButton();
+    bool decrementIsPressed();
+    bool incrementIsPressed();
     DisplayMode getCurrentMode();
 };
 
