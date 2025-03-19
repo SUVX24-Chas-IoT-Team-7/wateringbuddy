@@ -24,6 +24,8 @@ void MoistureSensor::init()
 
 void MoistureSensor::read() {
     digitalWrite(m_powerPin, HIGH);
+    delay(10); // Give the sensor time to power on
+
     digitalWrite(m_pThresholdManager->getLEDPin(percentage), LOW);
 
     this->m_data = getPin()->read(Pin::ANALOG).value_or(0);
