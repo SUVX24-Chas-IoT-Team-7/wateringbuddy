@@ -1,11 +1,9 @@
 #include "MoistureSensor.hpp"
 
-MoistureSensor::MoistureSensor(uint8_t powerPin, uint8_t inputPin, LedPins ledPins, int thresholds[3])
-    : Sensor(inputPin, INPUT), m_powerPin(powerPin), m_ledPins( ledPins )
+MoistureSensor::MoistureSensor(uint8_t powerPin, uint8_t inputPin, const LedPins &ledPins, ThresholdManager *thresholdManager)
+    : Sensor(inputPin, INPUT), m_powerPin(powerPin), m_ledPins(ledPins), m_pThresholdManager(thresholdManager)
 {
-    this->thresholds[0] = thresholds[0];
-    this->thresholds[1] = thresholds[1];
-    this->thresholds[2] = thresholds[2];
+    
 }
 
 void MoistureSensor::init() 
@@ -26,14 +24,24 @@ void MoistureSensor::init()
 
 void MoistureSensor::read() {
     digitalWrite(m_powerPin, HIGH);
+    delay(10); // Give the sensor time to power on
+
+    digitalWrite(m_pThresholdManager->getLEDPin(percentage), LOW);
 
     this->m_data = getPin()->read(Pin::ANALOG).value_or(0);
+    this->percentage = map(this->m_data, 1, 1023, 100, 0);
     this->lastMeasurement = millis();
 
+    digitalWrite(m_pThresholdManager->getLEDPin(percentage), HIGH);
     digitalWrite(m_powerPin, LOW);
 }
 
 time_t MoistureSensor::getLastMeasurement()
 {
     return this->lastMeasurement;
+}
+
+float MoistureSensor::getPercentage()
+{
+    return this->percentage;
 }
