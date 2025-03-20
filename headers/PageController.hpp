@@ -10,6 +10,7 @@
 
 #include "Buttons.hpp"
 #include "ThresholdManager.hpp"
+#include "Timer.hpp"
 
 class PageController
 {
@@ -21,7 +22,9 @@ private:
     Button m_buttonDecrement;
     Button m_buttonIncrement;
     DisplayMode m_currentMode;
-
+  
+    bool m_screenIsActive{ true };
+  
 public:
     /**
      * @brief Construct a new Page Controller object
@@ -30,9 +33,14 @@ public:
      * @param incrementPin
      */
     PageController(int togglePin, int decrementPin, int incrementPin);
+
     /**
      * @brief  Initialize the buttons
      */
+
+    Timer displayTimer { 20 * 1000 };
+    Timer sensorTimer { 3 * 1000 };
+
     void init();
     /**
      * @brief  Process the button presses
@@ -50,11 +58,15 @@ public:
      * @return false
      */
     bool incrementIsPressed();
+
     /**
      * @brief  Get the Current Mode object
      * @return DisplayMode
      */
     DisplayMode getCurrentMode();
+
+    bool screenIsActive();
+    void checkDisplayTimer();
 };
 
 #endif

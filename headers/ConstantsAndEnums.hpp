@@ -35,33 +35,33 @@ namespace moisture
 
 } // moisture
 
-namespace uvsensor
 /**
  * @brief  UV sensor pins
  */
-{
+namespace uvsensor {
   const int readingPin = A2;
-
 } // uvsensor
+
 /**
  * @brief   Display modes for the LCD
  */
 enum DisplayMode
 {
+  UPDATE_DISPLAY,
   MOISTURE_DISPLAY,
   LIGHT_DISPLAY,
   MOISTURE_TRESHOLD_DISPLAY,
   WATERING_DISPLAY,
   ADJUST_MOISTURE_DISPLAY
 };
+
 /**
  * @brief  Push button pins
  */
-namespace pushButtons
-{
-  const int TglPin = 2;
-  const int DecrPin = 3;
-  const int IncrPin = 4;
+namespace pushButtons {
+   const int TglPin = 2;
+   const int DecrPin = 3;
+   const int IncrPin = 4;
 }
 
 #endif
