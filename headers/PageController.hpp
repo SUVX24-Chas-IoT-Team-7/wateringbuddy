@@ -33,14 +33,13 @@ public:
      * @param incrementPin
      */
     PageController(int togglePin, int decrementPin, int incrementPin);
+  
+    Timer displayTimer { 10 * 1000 };
+    Timer sensorTimer { 5 * 60 * 1000 };
 
     /**
      * @brief  Initialize the buttons
      */
-
-    Timer displayTimer { 20 * 1000 };
-    Timer sensorTimer { 3 * 1000 };
-
     void init();
     /**
      * @brief  Process the button presses
