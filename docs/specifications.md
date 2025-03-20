@@ -62,7 +62,7 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 - LCD ska kunna visa information om ljusförhållanden.
 - LCD ska kunna visa om det är för mycket ljus.
 - LCD ska kunna visa om det är för lite ljus.
-- LCD tänds i 10 sekunder när användaren påbörjar en interaktion med någon av knapparna (1, 2, 3).
+- LCD tänds i 20 sekunder när användaren påbörjar en interaktion med någon av knapparna (1, 2, 3).
 - En knapp (1) ska växla vilken information man ser på LCD
 - En knapp (2) ska höja gränsen för acceptabelt värde på det mätvärde man ser på LCD
 - En knapp (3) ska sänka gränsen för acceptabelt värde på det mätvärde man ser på LCD
@@ -70,7 +70,9 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 **Tid:**
 
 - När värdet justeras ska det nya gränsvärdet för den sensorn visas på LCD under 5 sekunder.
-- Efter värdet har justerats och LCD visat det nya värdet ska den vara på ytterligare 10 sekunder och visa sensordata.
+- Efter värdet har justerats och LCD visat det nya värdet ska den vara på ytterligare 20 sekunder och visa sensordata.
+- LCD ska vara på tills dess att användaren går ut bevattningsläget.
+- När användaren går ur bevattningsläge är skärmen på i yttligare 20 sekunder.
   
 - Nya mätvärden ska registreras var 5:e minut.
 - Användaren ska kunna välja att nya värden mäts kontinuerligt genom att hålla ned knapp 1 i 3 sekunder. 
@@ -96,7 +98,7 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 
 Det ska finnas tre knappar och 5 LED. En grön (1), två gula (2, 5), en röd (3) och en blå (4). Det ska även finnas en LCD som ska visa information utefter vad användaren valt att visa. Ifall den gröna LED lyser behöver inte växten vattnas, ifall den blå LED lyser har man vattnat för mycket. Om gul LED (2) lyser betyder det att växten snart behöver vattnas. Lyser den röda LED bör växten vattnas snarast möjligt. Om LED 5 (gul) lyser betyder det att växten får för mycket ljus i det fönster den står nu.
 
-**Knapp 1:** Denna knapp växlar mellan vilken data LCD visar. Varje knapptryck stegar igenom alla sensorer som finns och skärmen hålls igång 10 sekunder efter att användaren inte har gjort någon input.
+**Knapp 1:** Denna knapp växlar mellan vilken data LCD visar. Varje knapptryck stegar igenom alla sensorer som finns och skärmen hålls igång 20 sekunder efter att användaren inte har gjort någon input.
 
 **Knapp 2:** Denna knapp ökar det godtagbara värdet för sensorn som användaren har valt med knapp 1. Om skärmen har slocknat utgår denna knapp från att användaren vill ändra hur fuktig jorden får vara innan man måste vattna igen.
 

@@ -15,7 +15,9 @@ ThresholdManager moistureStatus;
 TextManager textManager(&moistureStatus);
 PageController pageController(pushButtons::TglPin, pushButtons::DecrPin, pushButtons::IncrPin);
 
-MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
+MoistureSensor moistureSensor{ moisture::powerPin, moisture::readingPin, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
+Sensor lightSensor { lightSensors::lightReadingPin, INPUT };
+Sensor uvSensor { lightSensors::uvReadingPin, INPUT };
 
 DisplayMode activeMode { UPDATE_DISPLAY };
 
@@ -31,6 +33,8 @@ void setup()
 
   // initialize sensors
   moistureSensor.init();
+  lightSensor.init();
+  uvSensor.init();
 
   // enable Serial monitoring
   Serial.begin(9600);
@@ -41,16 +45,31 @@ void setup()
 
 void loop() {
 
-
+  // process buttons
   pageController.processToggleButton();
+  bool incrementIsPressed = pageController.incrementIsPressed();  
+  bool decrementIsPressed = pageController.decrementIsPressed();
+
+  DisplayMode newMode = pageController.getCurrentMode();
+
+  if (activeMode != newMode && newMode == DisplayMode::WATERING_DISPLAY) {
+    pageController.sensorTimer.setDuration(1000);
+  }
+
+  if (newMode == DisplayMode::WATERING_DISPLAY) {
+    pageController.displayTimer.reset();
+  }
+
+  if (activeMode != newMode && newMode == DisplayMode::MOISTURE_DISPLAY) {
+    pageController.sensorTimer.setDuration();
+    pageController.displayTimer.reset();
+  }
 
   // Removed Clear Screen for debugging purposes
   // pageController.checkDisplayTimer();
 
-  bool incrementIsPressed = pageController.incrementIsPressed();  
-  bool decrementIsPressed = pageController.decrementIsPressed();
 
-  if ((pageController.getCurrentMode() == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
+  if ((newMode == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
     if (incrementIsPressed) Serial.println("Increment is pressed");
     if (decrementIsPressed) Serial.println("Decrement is pressed");
 
@@ -68,13 +87,29 @@ void loop() {
   // read new sensor values
   if (pageController.sensorTimer.timeToUpdate()) {
     moistureSensor.read();
+    lightSensor.read();
+    uvSensor.read();
     activeMode = UPDATE_DISPLAY;
     pageController.sensorTimer.reset();
   }
 
-    if (pageController.screenIsActive() && activeMode != pageController.getCurrentMode()) {
+    if (pageController.screenIsActive() && activeMode != newMode) {
 
-      textManager.updateCurrentPage(pageController.getCurrentMode(), moistureSensor.getPercentage());
+      switch(newMode) {
+        case MOISTURE_DISPLAY:
+        case WATERING_DISPLAY:
+        textManager.updateCurrentPage(newMode, moistureSensor.getPercentage());
+        break;
+        case LIGHT_DISPLAY:
+        textManager.updateCurrentPage(newMode, lightSensor.getData(), uvSensor.getData());
+        break;
+        case MOISTURE_TRESHOLD_DISPLAY:
+        case ADJUST_MOISTURE_DISPLAY:
+        textManager.updateCurrentPage(newMode);
+        break;
+        default:   
+        ;     
+        }
       
       lcd.clear();
       lcd.setCursor(0,0);
@@ -85,9 +120,10 @@ void loop() {
       Serial.println(textManager.getLine1());
       Serial.println(textManager.getLine2());
 
-      activeMode = pageController.getCurrentMode();
+      activeMode = newMode;
     }
-    // Just do this once. How to fix?
+
+    // TODO: Just do this once. How to fix?
     if (!pageController.screenIsActive()) {
       lcd.clear();
     }

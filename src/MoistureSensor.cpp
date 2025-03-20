@@ -26,7 +26,10 @@ void MoistureSensor::read() {
     digitalWrite(m_powerPin, HIGH);
     delay(10); // Give the sensor time to power on
 
-    digitalWrite(m_pThresholdManager->getLEDPin(percentage), LOW);
+    digitalWrite(this->m_ledPins.blue, LOW);
+    digitalWrite(this->m_ledPins.red, LOW);
+    digitalWrite(this->m_ledPins.yellow, LOW);
+    digitalWrite(this->m_ledPins.green, LOW);
 
     this->m_data = getPin()->read(Pin::ANALOG).value_or(0);
     this->percentage = map(this->m_data, 1, 1023, 100, 0);
