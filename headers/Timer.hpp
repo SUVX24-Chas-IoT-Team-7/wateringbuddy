@@ -26,7 +26,7 @@ public:
         return (millis() - m_lastUpdate > m_timerDuration);
     }
 
-    void setDuration(unsigned long duration = 10000)
+    void setDuration(unsigned long duration = 3000) // change to longer value when done with debugging
     {
         m_timerDuration = duration;
     }
