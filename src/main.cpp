@@ -15,7 +15,9 @@ ThresholdManager moistureStatus;
 TextManager textManager(&moistureStatus);
 PageController pageController(pushButtons::TglPin, pushButtons::DecrPin, pushButtons::IncrPin);
 
-MoistureSensor moistureSensor{ A0, A1, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
+MoistureSensor moistureSensor{ moisture::powerPin, moisture::readingPin, MoistureSensor::LedPins{moisture::greenPin, moisture::yellowPin, moisture::redPin, moisture::bluePin}, &moistureStatus };
+Sensor lightSensor { lightSensors::lightReadingPin, INPUT };
+Sensor uvSensor { lightSensors::uvReadingPin, INPUT };
 
 DisplayMode activeMode { UPDATE_DISPLAY };
 
@@ -31,6 +33,8 @@ void setup()
 
   // initialize sensors
   moistureSensor.init();
+  lightSensor.init();
+  uvSensor.init();
 
   // enable Serial monitoring
   Serial.begin(9600);
@@ -70,6 +74,8 @@ void loop() {
   // read new sensor values
   if (pageController.sensorTimer.timeToUpdate()) {
     moistureSensor.read();
+    lightSensor.read();
+    uvSensor.read();
     activeMode = UPDATE_DISPLAY;
     pageController.sensorTimer.reset();
   }

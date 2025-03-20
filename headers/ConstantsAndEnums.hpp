@@ -24,11 +24,12 @@ namespace moisture
 
 } // moisture
 
-namespace uvsensor
+namespace lightSensors
 {
-  const int readingPin = A2;
+  const int lightReadingPin = A2;
+  const int uvReadingPin = A3;
 
-} // uvsensor
+} // lightSensors
 
   enum DisplayMode
   {
