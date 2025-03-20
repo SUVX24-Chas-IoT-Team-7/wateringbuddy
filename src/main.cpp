@@ -20,6 +20,7 @@ Sensor lightSensor { lightSensors::lightReadingPin, INPUT };
 Sensor uvSensor { lightSensors::uvReadingPin, INPUT };
 
 DisplayMode activeMode { UPDATE_DISPLAY };
+bool screenHasBeenCleared { false };
 
 void setup()
 {
@@ -39,8 +40,8 @@ void setup()
   // enable Serial monitoring
   Serial.begin(9600);
 
-
-
+  // Provide initial sensor value on startup
+  moistureSensor.read();
 }
 
 void loop() {
@@ -52,6 +53,7 @@ void loop() {
 
   DisplayMode newMode = pageController.getCurrentMode();
 
+  // Set DisplayMode specific timer values
   if (activeMode != newMode && newMode == DisplayMode::WATERING_DISPLAY) {
     pageController.sensorTimer.setDuration(1000);
   }
@@ -61,18 +63,15 @@ void loop() {
   }
 
   if (activeMode != newMode && newMode == DisplayMode::MOISTURE_DISPLAY) {
-    pageController.sensorTimer.setDuration();
+    pageController.sensorTimer.setDuration(5 * 60 * 1000);
     pageController.displayTimer.reset();
   }
 
-  // Removed Clear Screen for debugging purposes
-  // pageController.checkDisplayTimer();
+  // Check if time to clear display
+  pageController.checkDisplayTimer();
 
-
+  // Incr Decr button actions
   if ((newMode == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
-    if (incrementIsPressed) Serial.println("Increment is pressed");
-    if (decrementIsPressed) Serial.println("Decrement is pressed");
-
     if (incrementIsPressed) {
       moistureStatus.increaseThreshold();
       activeMode = UPDATE_DISPLAY;
@@ -93,6 +92,7 @@ void loop() {
     pageController.sensorTimer.reset();
   }
 
+  // Update LCD
     if (pageController.screenIsActive() && activeMode != newMode) {
 
       switch(newMode) {
@@ -121,11 +121,12 @@ void loop() {
       Serial.println(textManager.getLine2());
 
       activeMode = newMode;
+      screenHasBeenCleared = false;
     }
 
-    // TODO: Just do this once. How to fix?
-    if (!pageController.screenIsActive()) {
+    if (!pageController.screenIsActive() && !screenHasBeenCleared) {
       lcd.clear();
+      screenHasBeenCleared = true;
     }
 
 

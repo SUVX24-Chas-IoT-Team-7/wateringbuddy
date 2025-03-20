@@ -34,7 +34,7 @@ public:
      */
     PageController(int togglePin, int decrementPin, int incrementPin);
   
-    Timer displayTimer { 10 * 1000 };
+    Timer displayTimer { 30 * 1000 };
     Timer sensorTimer { 5 * 60 * 1000 };
 
     /**

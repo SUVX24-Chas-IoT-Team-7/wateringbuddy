@@ -52,7 +52,7 @@ public:
      * @brief Set the Duration object
      * @param duration
      */
-    void setDuration(unsigned long duration = 3000) // change to longer value when done with debugging
+    void setDuration(unsigned long duration = 10000)
     {
         m_timerDuration = duration;
     }
