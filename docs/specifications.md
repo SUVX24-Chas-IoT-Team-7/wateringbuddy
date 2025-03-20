@@ -71,6 +71,8 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 
 - När värdet justeras ska det nya gränsvärdet för den sensorn visas på LCD under 5 sekunder.
 - Efter värdet har justerats och LCD visat det nya värdet ska den vara på ytterligare 20 sekunder och visa sensordata.
+- LCD ska vara på tills dess att användaren går ut bevattningsläget.
+- När användaren går ur bevattningsläge är skärmen på i yttligare 20 sekunder.
   
 - Nya mätvärden ska registreras var 5:e minut.
 - Användaren ska kunna välja att nya värden mäts kontinuerligt genom att hålla ned knapp 1 i 3 sekunder. 
