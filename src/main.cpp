@@ -41,21 +41,20 @@ void setup()
 
 void loop() {
 
-
   pageController.processToggleButton();
 
-  if (activeMode == UPDATE_DISPLAY && pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
+  if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
     pageController.sensorTimer.setDuration(1000);
     pageController.displayTimer.reset();
 
-    activeMode = pageController.getCurrentMode();
+    // activeMode = pageController.getCurrentMode();
   }
 
-  if (activeMode == UPDATE_DISPLAY && pageController.getCurrentMode() != DisplayMode::WATERING_DISPLAY) {
+  if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() != DisplayMode::WATERING_DISPLAY) {
     pageController.sensorTimer.setDuration();
     pageController.displayTimer.reset();
 
-    activeMode = pageController.getCurrentMode();
+    // activeMode = pageController.getCurrentMode();
   }
 
   bool incrementIsPressed = pageController.incrementIsPressed();  
