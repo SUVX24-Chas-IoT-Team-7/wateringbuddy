@@ -45,9 +45,12 @@ void loop() {
 
   if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
     pageController.sensorTimer.setDuration(1000);
-    pageController.displayTimer.reset();
 
     // activeMode = pageController.getCurrentMode();
+  }
+
+  if (pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
+    pageController.displayTimer.reset();
   }
 
   if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() != DisplayMode::WATERING_DISPLAY) {
