@@ -5,3 +5,4 @@ Watering Buddy - IoT School Project
 - [Software Requirement Specification](docs/specifications.md)
 - [User Stories](docs/userstories.md)
 - [User Manual](docs/manual.md)
+- [Schematic](docs/assets/Water%20buddy_schem_0.2.pdf)
