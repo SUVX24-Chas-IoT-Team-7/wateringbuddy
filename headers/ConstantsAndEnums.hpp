@@ -1,6 +1,13 @@
 #ifndef MOIST_CONSTANTS_AND_ENUMS_HPP
 #define MOIST_CONSTANTS_AND_ENUMS_HPP
-
+/**
+ * @file ConstantsAndEnums.hpp
+ * @author Erik Dahl (you@domain.com)
+ * @brief  Constants and enums for the project
+ * @details This file contains all the constants and enums used in the project
+ * @version 0.1
+ * @date 2025-03-20
+ */
 #include <Arduino.h>
 
 enum thresholdNames
@@ -12,10 +19,14 @@ enum thresholdNames
 
 namespace moisture
 {
-  // sensor pins
+  /**
+   * @brief  Moisture sensor pins
+   */
   const int powerPin = A0;
   const int readingPin = A1;
-  // LED pins
+  /**
+   * @brief  LED pins
+   */
   const int redPin = 6;
   const int yellowPin = 7;
   const int greenPin = 8;
@@ -25,24 +36,32 @@ namespace moisture
 } // moisture
 
 namespace uvsensor
+/**
+ * @brief  UV sensor pins
+ */
 {
   const int readingPin = A2;
 
 } // uvsensor
-
-  enum DisplayMode
-  {
-    MOISTURE_DISPLAY,
-    LIGHT_DISPLAY,
-    MOISTURE_TRESHOLD_DISPLAY,
-    WATERING_DISPLAY,
-    ADJUST_MOISTURE_DISPLAY
-  };
-
-namespace pushButtons {
-   const int TglPin = 2;
-   const int DecrPin = 3;
-   const int IncrPin = 4;
+/**
+ * @brief   Display modes for the LCD
+ */
+enum DisplayMode
+{
+  MOISTURE_DISPLAY,
+  LIGHT_DISPLAY,
+  MOISTURE_TRESHOLD_DISPLAY,
+  WATERING_DISPLAY,
+  ADJUST_MOISTURE_DISPLAY
+};
+/**
+ * @brief  Push button pins
+ */
+namespace pushButtons
+{
+  const int TglPin = 2;
+  const int DecrPin = 3;
+  const int IncrPin = 4;
 }
 
 #endif
