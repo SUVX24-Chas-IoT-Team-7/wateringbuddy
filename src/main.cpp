@@ -44,11 +44,13 @@ void loop() {
 
   pageController.processToggleButton();
 
+  bool incrementIsPressed = pageController.incrementIsPressed();  
+  bool decrementIsPressed = pageController.decrementIsPressed();
+
+  // TODO: When DisplayMode == WATERING_DISPLAY, either reset timer or don't call checkDisplayTimer
   // Removed Clear Screen for debugging purposes
   // pageController.checkDisplayTimer();
 
-  bool incrementIsPressed = pageController.incrementIsPressed();  
-  bool decrementIsPressed = pageController.decrementIsPressed();
 
   if ((pageController.getCurrentMode() == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
     if (incrementIsPressed) Serial.println("Increment is pressed");
@@ -87,7 +89,7 @@ void loop() {
 
       activeMode = pageController.getCurrentMode();
     }
-    // Just do this once. How to fix?
+    // TODO: Just do this once. How to fix?
     if (!pageController.screenIsActive()) {
       lcd.clear();
     }
