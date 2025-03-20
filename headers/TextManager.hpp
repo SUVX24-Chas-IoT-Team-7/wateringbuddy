@@ -46,16 +46,16 @@ public:
      * @brief Construct a new Text Manager object
      * @param manager
      */
-    TextManager(ThresholdManager *manager);
-    const char *getLine1();
-    const char *getLine2();
-    /**
-     * @brief  Update the text on the LCD
+    TextManager(ThresholdManager* manager);
+    const char* getLine1();
+    const char* getLine2();
+     /**
+     * @brief  Update the text that gets printed on the LCD
      * @param mode
-     * @param sensorValue
-     * @param sensorValue2
-     */
-    void updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2 = 0);
+     * @param sensorValue defaults to 0 for modes that does not use it
+     * @param sensorValue2 defaults to 0 for modes that does not use it
+     */  
+     void updateCurrentPage(DisplayMode mode, int sensorValue = 0, int sensorValue2 = 0);
 };
 
 #endif

@@ -36,11 +36,14 @@ namespace moisture
 } // moisture
 
 /**
- * @brief  UV sensor pins
+ * @brief  light and UV sensor pins
  */
-namespace uvsensor {
-  const int readingPin = A2;
-} // uvsensor
+namespace lightSensors
+{
+  const int lightReadingPin = A2;
+  const int uvReadingPin = A3;
+} // lightSensors
+
 
 /**
  * @brief   Display modes for the LCD
