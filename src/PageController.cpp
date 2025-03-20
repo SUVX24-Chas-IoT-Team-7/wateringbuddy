@@ -15,48 +15,51 @@ void PageController::init() {
 void PageController::processToggleButton(){
 
     ButtonState currentState = m_buttonToggleMode.getState();
-    // Active mode reset implementation goes here
-
-    switch(m_currentMode) {
-        case MOISTURE_DISPLAY:
-        if (currentState == SHORTPRESS) {
-            m_currentMode = LIGHT_DISPLAY;  // go to page 1
+    if (!m_screenIsActive && currentState) {
+        m_screenIsActive = true;
+        displayTimer.reset();
+    } else {
+        if (currentState) displayTimer.reset();
+        switch(m_currentMode) {
+            case MOISTURE_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = LIGHT_DISPLAY;  // go to page 1
+            }
+            else if (currentState == LONGPRESS) {
+                m_currentMode = WATERING_DISPLAY;
+            }
+            break;
+            
+            case LIGHT_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = MOISTURE_TRESHOLD_DISPLAY;  // go to page 2
+            }
+            else if (currentState == LONGPRESS) {
+                // No implementation yet
+            }
+            break;
+            
+            case MOISTURE_TRESHOLD_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = MOISTURE_DISPLAY;           // go to page 0
+            }
+            else if (currentState == LONGPRESS) {
+                m_currentMode = ADJUST_MOISTURE_DISPLAY;
+            }
+            break;
+            
+            case WATERING_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = MOISTURE_DISPLAY;
+            }
+            break;
+            
+            case ADJUST_MOISTURE_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = MOISTURE_TRESHOLD_DISPLAY;
+            }            
+            break;
         }
-        else if (currentState == LONGPRESS) {
-            m_currentMode = WATERING_DISPLAY;
-        }
-        break;
-
-        case LIGHT_DISPLAY:
-        if (currentState == SHORTPRESS) {
-            m_currentMode = MOISTURE_TRESHOLD_DISPLAY;  // go to page 2
-        }
-        else if (currentState == LONGPRESS) {
-            // No implementation yet
-        }
-        break;
-
-        case MOISTURE_TRESHOLD_DISPLAY:
-        if (currentState == SHORTPRESS) {
-            m_currentMode = MOISTURE_DISPLAY;           // go to page 0
-        }
-        else if (currentState == LONGPRESS) {
-            m_currentMode = ADJUST_MOISTURE_DISPLAY;
-        }
-        break;
-
-        case WATERING_DISPLAY:
-        if (currentState == SHORTPRESS) {
-            m_currentMode = MOISTURE_DISPLAY;
-        }
-        break;
-
-        case ADJUST_MOISTURE_DISPLAY:
-        if (currentState == SHORTPRESS) {
-            m_currentMode = MOISTURE_TRESHOLD_DISPLAY;
-        }
-
-        break;
 
     }    
 }
@@ -69,4 +72,14 @@ bool PageController::incrementIsPressed(){
 
 DisplayMode PageController::getCurrentMode(){
     return m_currentMode;
+}
+
+bool PageController::screenIsActive(){
+    return m_screenIsActive;
+}
+
+void PageController::checkDisplayTimer() {
+    if (displayTimer.timeToUpdate()) {
+        m_screenIsActive = false;
+    }
 }

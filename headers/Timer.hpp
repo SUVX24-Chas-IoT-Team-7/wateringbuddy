@@ -6,32 +6,31 @@
 class Timer
 {
 private:
-    unsigned long _timerDuration;
-    unsigned long _lastUpdate;
+    unsigned long m_timerDuration;
+    unsigned long m_lastUpdate;
 
 public:
-    Timer(unsigned long timerDuration = 10000);
+    Timer(unsigned long timerDuration = 10000)  
+        : m_timerDuration(timerDuration)
+    {
+        reset();
+    }
 
     void reset()
     {
-        _lastUpdate = millis();
+        m_lastUpdate = millis();
     }
 
     bool timeToUpdate()
     {
-        return (_lastUpdate - millis() > _timerDuration);
+        return (millis() - m_lastUpdate > m_timerDuration);
     }
 
     void setDuration(unsigned long duration = 10000)
     {
-        _timerDuration = duration;
+        m_timerDuration = duration;
     }
 };
 
-Timer::Timer(unsigned long timerDuration)
-    : _timerDuration(timerDuration)
-{
-    reset();
-}
 
 #endif // TIME_Timer_HPP
