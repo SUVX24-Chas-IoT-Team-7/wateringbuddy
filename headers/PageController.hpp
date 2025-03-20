@@ -22,6 +22,10 @@ private:
     Button m_buttonDecrement;
     Button m_buttonIncrement;
     DisplayMode m_currentMode;
+    /**
+     * @brief Set to UPDATE_DISPLAY so screen will update on startup
+     */
+    DisplayMode m_activeMode { UPDATE_DISPLAY };
   
     bool m_screenIsActive{ true };
   
@@ -34,7 +38,7 @@ public:
      */
     PageController(int togglePin, int decrementPin, int incrementPin);
   
-    Timer displayTimer { 10 * 1000 };
+    Timer displayTimer { 30 * 1000 };
     Timer sensorTimer { 5 * 60 * 1000 };
 
     /**
@@ -59,10 +63,22 @@ public:
     bool incrementIsPressed();
 
     /**
-     * @brief  Get the Current Mode object
+     * @brief  Get the Current Mode object, i.e. the new mode
      * @return DisplayMode
      */
     DisplayMode getCurrentMode();
+    /**
+     * @brief Get the Active Mode object, i.e. the old mode
+     * 
+     * @return DisplayMode 
+     */
+    DisplayMode getActiveMode();
+    /**
+     * @brief Set the Active Mode object
+     * 
+     * @param mode 
+     */
+    void setActiveMode(DisplayMode mode);
 
     bool screenIsActive();
     void checkDisplayTimer();
