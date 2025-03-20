@@ -22,7 +22,7 @@ public:
     TextManager(ThresholdManager* manager);
     const char* getLine1();
     const char* getLine2();
-    void updateCurrentPage(DisplayMode mode, int sensorValue, int sensorValue2 = 0);
+    void updateCurrentPage(DisplayMode mode, int sensorValue = 0, int sensorValue2 = 0);
 };
 
 #endif
