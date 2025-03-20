@@ -44,6 +44,16 @@ void loop() {
 
   pageController.processToggleButton();
 
+  if (activeMode == UPDATE_DISPLAY && pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
+    pageController.sensorTimer.setDuration(1000);
+    pageController.displayTimer.reset();
+  }
+
+  if (activeMode == UPDATE_DISPLAY && pageController.getCurrentMode() != DisplayMode::WATERING_DISPLAY) {
+    pageController.sensorTimer.setDuration();
+    pageController.displayTimer.reset();
+  }
+
   bool incrementIsPressed = pageController.incrementIsPressed();  
   bool decrementIsPressed = pageController.decrementIsPressed();
 
