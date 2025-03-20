@@ -43,27 +43,23 @@ void loop() {
 
   pageController.processToggleButton();
 
+  
   if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
     pageController.sensorTimer.setDuration(1000);
-
-    // activeMode = pageController.getCurrentMode();
   }
 
   if (pageController.getCurrentMode() == DisplayMode::WATERING_DISPLAY) {
     pageController.displayTimer.reset();
   }
 
-  if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() != DisplayMode::WATERING_DISPLAY) {
+  if (activeMode != pageController.getCurrentMode() && pageController.getCurrentMode() == DisplayMode::MOISTURE_DISPLAY) {
     pageController.sensorTimer.setDuration();
     pageController.displayTimer.reset();
-
-    // activeMode = pageController.getCurrentMode();
   }
 
   bool incrementIsPressed = pageController.incrementIsPressed();  
   bool decrementIsPressed = pageController.decrementIsPressed();
 
-  // TODO: When DisplayMode == WATERING_DISPLAY, either reset timer or don't call checkDisplayTimer
   // Removed Clear Screen for debugging purposes
   // pageController.checkDisplayTimer();
 
