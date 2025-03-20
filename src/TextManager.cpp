@@ -50,7 +50,7 @@ TextManager::TextManager(ThresholdManager* manager)
             
             case MOISTURE_TRESHOLD_DISPLAY:
             composeLine(line1, "Moisture Center");
-            composeLine(line2, "Value: ", sensorValue, "%");
+            composeLine(line2, "Value: ", m_manager->getMoistureCenterValue(), "%");
             break;
             
             case WATERING_DISPLAY:
@@ -60,7 +60,7 @@ TextManager::TextManager(ThresholdManager* manager)
             
             case ADJUST_MOISTURE_DISPLAY:
             composeLine(line1, "Set Center Value");
-            composeLine(line2, "       ", sensorValue, "%");
+            composeLine(line2, "       ", m_manager->getMoistureCenterValue(), "%");
             break;
         
             default:
