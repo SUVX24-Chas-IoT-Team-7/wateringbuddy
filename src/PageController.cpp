@@ -15,8 +15,10 @@ void PageController::init() {
 void PageController::processToggleButton(){
 
     ButtonState currentState = m_buttonToggleMode.getState();
+    // on sleep
     if (!m_screenIsActive && currentState) {
         m_screenIsActive = true;
+        m_activeMode = UPDATE_DISPLAY;
         displayTimer.reset();
     } else {
         if (currentState) displayTimer.reset();
@@ -72,6 +74,14 @@ bool PageController::incrementIsPressed(){
 
 DisplayMode PageController::getCurrentMode(){
     return m_currentMode;
+}
+
+DisplayMode PageController::getActiveMode(){
+    return m_activeMode;
+}
+
+void PageController::setActiveMode(DisplayMode mode) {
+    m_activeMode = mode;
 }
 
 bool PageController::screenIsActive(){

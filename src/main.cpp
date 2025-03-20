@@ -19,7 +19,7 @@ MoistureSensor moistureSensor{ moisture::powerPin, moisture::readingPin, Moistur
 Sensor lightSensor { lightSensors::lightReadingPin, INPUT };
 Sensor uvSensor { lightSensors::uvReadingPin, INPUT };
 
-DisplayMode activeMode { UPDATE_DISPLAY };
+//DisplayMode activeMode { UPDATE_DISPLAY };
 bool screenHasBeenCleared { false };
 
 void setup()
@@ -51,6 +51,7 @@ void loop() {
   bool incrementIsPressed = pageController.incrementIsPressed();  
   bool decrementIsPressed = pageController.decrementIsPressed();
 
+  DisplayMode activeMode = pageController.getActiveMode();
   DisplayMode newMode = pageController.getCurrentMode();
 
   // Set DisplayMode specific timer values
@@ -74,11 +75,11 @@ void loop() {
   if ((newMode == ADJUST_MOISTURE_DISPLAY) && pageController.screenIsActive()) {
     if (incrementIsPressed) {
       moistureStatus.increaseThreshold();
-      activeMode = UPDATE_DISPLAY;
+      pageController.setActiveMode(UPDATE_DISPLAY);
     }
     if (decrementIsPressed) {
       moistureStatus.decreaseThreshold();
-      activeMode = UPDATE_DISPLAY;
+      pageController.setActiveMode(UPDATE_DISPLAY);
     }
   
   }
@@ -88,10 +89,12 @@ void loop() {
     moistureSensor.read();
     lightSensor.read();
     uvSensor.read();
-    activeMode = UPDATE_DISPLAY;
+    pageController.setActiveMode(UPDATE_DISPLAY);
     pageController.sensorTimer.reset();
   }
 
+  // reupdate activeMode
+  activeMode = pageController.getActiveMode();
   // Update LCD
     if (pageController.screenIsActive() && activeMode != newMode) {
 
@@ -110,7 +113,7 @@ void loop() {
         default:   
         ;     
         }
-      
+
       lcd.clear();
       lcd.setCursor(0,0);
       lcd.print(textManager.getLine1());
@@ -120,7 +123,7 @@ void loop() {
       Serial.println(textManager.getLine1());
       Serial.println(textManager.getLine2());
 
-      activeMode = newMode;
+      pageController.setActiveMode(newMode);
       screenHasBeenCleared = false;
     }
 
