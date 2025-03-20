@@ -24,8 +24,8 @@ private:
     bool m_screenIsActive{ true };
 public:
     PageController(int togglePin, int decrementPin, int incrementPin);
-    Timer displayTimer { 20 * 1000 };
-    Timer sensorTimer { 3 * 1000 };
+    Timer displayTimer { 10 * 1000 };
+    Timer sensorTimer { 300 * 1000 };
     void init();
     void processToggleButton();
     bool decrementIsPressed();
