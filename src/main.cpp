@@ -40,8 +40,10 @@ void setup()
   // enable Serial monitoring
   Serial.begin(9600);
 
-  // Provide initial sensor value on startup
+  // Provide initial sensor values on startup
   moistureSensor.read();
+  lightSensor.read();
+  uvSensor.read();
 }
 
 void loop() {
