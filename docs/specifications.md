@@ -4,7 +4,7 @@
 
 ### 1.1 Produkts omfång
 
-Produkten ska kunna mäta och visa upp UV-ljus och jordfuktighet för att kunna ge krukväxter de bästa möjliga förutsättningarna att växa på rätt sätt. Med denna produkt ska man kunna se ifall man behöver vattna sin växt så att man kan lättare hantera de växter man har hemma. Status på jordfuktigheten visas på röd, grön, gul och blå LED och om växten får för lite eller för mycket ljus börjar en annan gul LED lysa. Mer information kring dessa förhållanden ska kunna visas på en LCD.
+Produkten ska kunna mäta och visa upp ljus förhållanden och jordfuktighet för att kunna ge krukväxter de bästa möjliga förutsättningarna att växa på rätt sätt. Med denna produkt ska man kunna se ifall man behöver vattna sin växt så att man kan lättare hantera de växter man har hemma. Status på jordfuktigheten visas på röd, grön, gul och blå LED. Man kan justera hur mycket fuktighet som krävs för att LED'erna ska lysa för att anpassa det för vad man har för växt. Mer information kring dessa förhållanden ska kunna visas på en LCD.
 
 ### 1.2 Målgrupp
 
@@ -60,8 +60,6 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 
 - LCD ska kunna visa information för bevattning
 - LCD ska kunna visa information om ljusförhållanden.
-- LCD ska kunna visa om det är för mycket ljus.
-- LCD ska kunna visa om det är för lite ljus.
 - LCD tänds i 20 sekunder när användaren påbörjar en interaktion med någon av knapparna (1, 2, 3).
 - En knapp (1) ska växla vilken information man ser på LCD
 - En knapp (2) ska höja gränsen för acceptabelt värde på det mätvärde man ser på LCD
@@ -96,7 +94,7 @@ Denna produkt är avsedd att placeras i en krukväxts kruka. Den ska sedan autom
 
 ### 3.1 Användargränssnitt
 
-Det ska finnas tre knappar och 5 LED. En grön (1), två gula (2, 5), en röd (3) och en blå (4). Det ska även finnas en LCD som ska visa information utefter vad användaren valt att visa. Ifall den gröna LED lyser behöver inte växten vattnas, ifall den blå LED lyser har man vattnat för mycket. Om gul LED (2) lyser betyder det att växten snart behöver vattnas. Lyser den röda LED bör växten vattnas snarast möjligt. Om LED 5 (gul) lyser betyder det att växten får för mycket ljus i det fönster den står nu.
+Det ska finnas tre knappar och 5 LED. En grön (1), två gula (2, 5), en röd (3) och en blå (4). Det ska även finnas en LCD som ska visa information utefter vad användaren valt att visa. Ifall den gröna LED lyser behöver inte växten vattnas, ifall den blå LED lyser har man vattnat för mycket. Om gul LED (2) lyser betyder det att växten snart behöver vattnas. Lyser den röda LED bör växten vattnas snarast möjligt. 
 
 **Knapp 1:** Denna knapp växlar mellan vilken data LCD visar. Varje knapptryck stegar igenom alla sensorer som finns och skärmen hålls igång 20 sekunder efter att användaren inte har gjort någon input.
 
@@ -110,4 +108,4 @@ Arduinon ska läsa av jordfuktighetssensorn och UV-sensorn på analoga pins.
 
 ### 3.3 Mjukvarugränssnitt
 
-Programmet ska använda sig av Arduino IDE och de bibliotek som finns tillgängliga där. 
+Programmet ska vara skrivet i C++ och tillämpliga bibliotek.
