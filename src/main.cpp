@@ -120,6 +120,9 @@ void loop() {
         ;     
         }
 
+      if (screenHasBeenCleared) {
+        lcd.backlight();
+      }
       lcd.clear();
       lcd.setCursor(0,0);
       lcd.print(textManager.getLine1());
@@ -135,6 +138,7 @@ void loop() {
 
     if (!pageController.screenIsActive() && !screenHasBeenCleared) {
       lcd.clear();
+      lcd.noBacklight();
       screenHasBeenCleared = true;
     }
 
