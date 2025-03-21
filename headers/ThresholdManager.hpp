@@ -54,12 +54,20 @@ public:
     void decreaseThreshold();
 
     /**
-     * @brief Get the Moisture String object
+     * @brief Get a string describing the given moistureValue
      *
      * @param moistureValue
      * @return const char*
      */
     const char *getMoistureString(int moistureValue) const;
+
+        /**
+     * @brief Get a short string describing the given moistureValue
+     *
+     * @param moistureValue
+     * @return const char*
+     */
+    const char *getMoistureShortString(int moistureValue) const;
 
     /**
      * @brief

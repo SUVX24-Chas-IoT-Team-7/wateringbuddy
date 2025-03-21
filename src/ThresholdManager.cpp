@@ -80,6 +80,27 @@ const char *ThresholdManager::getMoistureString(int moistureValue) const
         return "Soil is too wet";
     }
 }
+
+const char *ThresholdManager::getMoistureShortString(int moistureValue) const
+{
+    if (moistureValue < m_thresholds[DRY])
+    {
+        return "Dry";
+    }
+    else if (moistureValue < m_thresholds[GOOD])
+    {
+        return "Dry";
+    }
+    else if (moistureValue < m_thresholds[WET])
+    {
+        return "Good";
+    }
+    else
+    {
+        return "Wet";
+    }
+}
+
 /**
  * @brief
  *

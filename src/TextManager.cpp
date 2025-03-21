@@ -14,7 +14,7 @@ TextManager::TextManager(ThresholdManager* manager)
         // add text 
         strncat(line, text, bufferSize - strlen(line) - 1);
     }
-    void TextManager::composeLine(char* line, const char* text, int value, const char* unit) {
+    void TextManager::composeLine(char* line, const char* text, int value, const char* unit, const char* info) {
         // clear line
         clearBuffer(line);
         // add text 
@@ -25,6 +25,9 @@ TextManager::TextManager(ThresholdManager* manager)
         strncat(line, valueStr, bufferSize - strlen(line) - 1);
         // add unit
         strncat(line, unit, bufferSize - strlen(line) - 1);
+        if (info != nullptr) {
+            strncat(line, info, bufferSize - strlen(line) - 1);
+        }
     }
 
     const char* TextManager::getLine1(){
@@ -55,7 +58,7 @@ TextManager::TextManager(ThresholdManager* manager)
             
             case WATERING_DISPLAY:
             composeLine(line1, "Watering Mode");
-            composeLine(line2, "Moist: ", sensorValue, "%");
+            composeLine(line2, "Moist: ", sensorValue, "% ", m_manager->getMoistureShortString(sensorValue));
             break;
         
             case LIGHT_FASTMODE_DISPLAY:
