@@ -1,4 +1,7 @@
 .pio
 
-## igvore VS Code configuration folder
+## ignore VS Code configuration folder
 .vscode/
+
+## ignore windows specific files
+.DS_Store
