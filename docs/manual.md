@@ -2,15 +2,15 @@
 
 ## Introduction
 
-This user manual provides step-by-step instructions for effectively using the product, ensuring a seamless experience. It includes guidance on setup, daily operations, and maintenance.
+This user manual provides step-by-step instructions for effectively using Watering Buddy, ensuring a seamless experience. It includes guidance on setup, daily operations, and maintenance.
 
 ## Setup and Installation
 
 The setup process is divided up into steps below:
 
-1. Put the soilmoisture sensor into a pot of choice.
-2. Power on the Arduino using a 5V power supply via USB-C or using a 9V battery.
-3. Put the UV sensor facing out of the window
+1. Put the soil moisture sensor into a pot of choice.
+2. Put the UV sensor also in the pot.
+3. Power on the Arduino using a 5V power supply via USB-C or using a 9V battery.
 
 ![Image of the sensor inside a pot](assets/Watering_Buddy_Sensor_Pot1.jpg)
 
@@ -18,8 +18,7 @@ The setup process is divided up into steps below:
 
 The Arduino will handle most of the tasks by itself but there are a few things the user has control over. Such as:
 
-- How moist the soil should be.
-- How much light the plant should recieve.
+- How moist the optimal soil should be.
 
 ### LEDs
 
@@ -27,38 +26,100 @@ The Arduino will handle most of the tasks by itself but there are a few things t
 
 - The yellow LED indicates (between the green and red LED) indicates slightly dry soil.
 
-- The red LED indicates to little water in the soil.
+- The red LED indicates too little water in the soil.
 
 - The blue LED indicates too much water in the soil.
 
-- The yellow LED (separate from the other four) indicates that something is wrong with the amount of light the plant is recieving.
-
 ### Using the Menu
 
-The menu can be used by using the buttons provided with the product. By holding down BUTTON 1, the menu button, you execute an action, defined by the table below. By quickly pressing and releasing the button you switch which measurement you show on the LCD.
+The menu can be navigated using the buttons provided with the product. 
+- BUTTON 1 is used for navigation. It has functionality for short press and long press.
+- BUTTON 2 is to decrease value (context based) 
+- BUTTON 3 is to increase value (context based)
 
-#### BUTTON 1:
+___
 
-| Current page |  **Long press**  | **Short press** |
-|  :-   | :-: | :-: |
-| When displaying current water level | Turn on continuous measurements | Change displayed page
-| When displaying "Adjust water level" | Enter adjustment mode for moisture |  Change displayed page
-| When displaying current UV-level | Enter adjustment mode for UV | Change displayed page
-| When adjusting water level | N/A |  Finish adjusting
-| When adjusting UV level | N/A |  Finish adjusting
-| When measuring realtime water level | N/A |  Finish monitoring
+#### Page 1: Moisture display
+
+![LCD page 1 moist info](assets/page1_moist_info.png)
+
+**BUTTON 1:**
+
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| Enter watering mode | Change display to next page
+  
+___
+
+#### Page 2: Light display
+
+![LCD page 2 light info](assets/page2_light_info.png)
+
+**BUTTON 1:**
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| Enter Light/UV Fast Mode | Change display to next page
+
+___
+
+#### Page 3: Moisture center value
+
+![LCD page 3 moisture center value](assets/page3_moisture_center.png)
+
+**BUTTON 1:**
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| Enter adjustment mode for moisture | Change display to next page
+
+___
+
+#### Page 4: Watering mode 
+
+![LCD page 4 Watering mode](assets/page4_watering_mode.png)
+
+When in watering mode measurements are continous, happening every second
+
+**BUTTON 1:**
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| N/A |  Exit watering mode
+
+___
+
+#### Page 5: Light/UV fast mode 
+
+![LCD page 6 light fast mode](assets/page6_light_fastmode.png)
+
+When in light/UV fast mode measurements are continous, happening every second
+
+**BUTTON 1:**
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| N/A |  Exit light/UV fast mode
+
+___
+
+#### Page 6: Adjust Moisture Thresholds
+
+![LCD page 65 set center value](assets/page5_set_center_value.png)
+
+In this mode you can adjust the threshold for moisture. The center value is in the middle of the good span and is used to calculate thresholds. A value of 60% will give Wet above 70%, Good between 51-70%, Semidry between 25-50% and Dry < 25%
+
+**BUTTON 1:**
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| N/A |  Exit adjust moisture threshold mode
 
 
-#### BUTTON 2:
+**BUTTON 2:**
 
-| Current page |  **Long press**  | **Short press** |
-|  :-   | :-: | :-: |
-| When adjusting water level | N/A |  Increase water level tolerance
-| When adjusting UV level | N/A |  Increase UV level tolerance
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| N/A |  Decrease center threshold value
 
-#### BUTTON 3:
+**BUTTON 3:**
 
-| Current page |  **Long press**  | **Short press** |
-|  :-   | :-: | :-: |
-| When adjusting water level | N/A |  Decrease water level tolerance
-| When adjusting UV level | N/A |  Decrease UV level tolerance
+|  **Long press**  | **Short press** |
+|  :-   | :-: |
+| N/A |  Increase center threshold value
+
