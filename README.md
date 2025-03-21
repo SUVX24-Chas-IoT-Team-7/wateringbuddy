@@ -6,3 +6,4 @@ Watering Buddy - IoT School Project
 - [User Stories](docs/userstories.md)
 - [User Manual](docs/manual.md)
 - [Schematic](docs/assets/Water%20buddy_schem_0.2.pdf)
+- [UML diagram](docs/UML/wateringbuddy-v4.svg)
