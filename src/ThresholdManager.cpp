@@ -1,6 +1,6 @@
 #include "ThresholdManager.hpp"
 
-ThresholdManager::ThresholdManager(int moistureCenter = 60)
+ThresholdManager::ThresholdManager(int moistureCenter)
     : m_moistureCenter{moistureCenter}
 {
     setNewThresholds(m_moistureCenter);
