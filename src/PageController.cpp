@@ -37,7 +37,7 @@ void PageController::processToggleButton(){
                 m_currentMode = MOISTURE_TRESHOLD_DISPLAY;  // go to page 2
             }
             else if (currentState == LONGPRESS) {
-                // No implementation yet
+                m_currentMode = LIGHT_FASTMODE_DISPLAY;
             }
             break;
             
@@ -56,6 +56,12 @@ void PageController::processToggleButton(){
             }
             break;
             
+            case LIGHT_FASTMODE_DISPLAY:
+            if (currentState == SHORTPRESS) {
+                m_currentMode = LIGHT_DISPLAY;
+            }
+            break;
+
             case ADJUST_MOISTURE_DISPLAY:
             if (currentState == SHORTPRESS) {
                 m_currentMode = MOISTURE_TRESHOLD_DISPLAY;

@@ -57,7 +57,12 @@ TextManager::TextManager(ThresholdManager* manager)
             composeLine(line1, "Watering Mode");
             composeLine(line2, "Moist: ", sensorValue, "%");
             break;
-            
+        
+            case LIGHT_FASTMODE_DISPLAY:
+            composeLine(line1, "Light: ", sensorValue, " Fast");
+            composeLine(line2, "UV: ", sensorValue2, "    Mode");
+            break;
+
             case ADJUST_MOISTURE_DISPLAY:
             composeLine(line1, "Set Center Value");
             composeLine(line2, "       ", m_manager->getMoistureCenterValue(), "%");
