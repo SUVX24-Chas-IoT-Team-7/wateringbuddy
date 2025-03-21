@@ -12,6 +12,8 @@ The setup process is divided up into steps below:
 2. Power on the Arduino using a 5V power supply via USB-C or using a 9V battery.
 3. Put the UV sensor facing out of the window
 
+![Image of the sensor inside a pot](assets/Watering_Buddy_Sensor_Pot1.jpg)
+
 ## Operation
 
 The Arduino will handle most of the tasks by itself but there are a few things the user has control over. Such as:
