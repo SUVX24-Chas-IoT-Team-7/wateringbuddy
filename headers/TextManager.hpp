@@ -39,7 +39,7 @@ private:
      * @param value
      * @param unit
      */
-    void composeLine(char *line, const char *text, int value, const char *unit = "");
+    void composeLine(char *line, const char *text, int value, const char *unit = "", const char* info = nullptr);
 
 public:
     /**

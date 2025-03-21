@@ -61,16 +61,21 @@ void loop() {
   DisplayMode newMode = pageController.getCurrentMode();
 
   // Set DisplayMode specific timer values
-  if (activeMode != newMode && newMode == DisplayMode::WATERING_DISPLAY) {
-    pageController.sensorTimer.setDuration(1000);
+  if (activeMode != newMode) {
+    if (newMode == DisplayMode::WATERING_DISPLAY || 
+        newMode == DisplayMode::LIGHT_FASTMODE_DISPLAY) {
+          pageController.sensorTimer.setDuration(1000);
+    }          
+    if (newMode == DisplayMode::MOISTURE_DISPLAY ||
+        newMode == DisplayMode::LIGHT_DISPLAY) {
+          pageController.sensorTimer.setDuration(5 * 60 * 1000);
+          pageController.displayTimer.reset();
+    }        
   }
 
-  if (newMode == DisplayMode::WATERING_DISPLAY) {
-    pageController.displayTimer.reset();
-  }
-
-  if (activeMode != newMode && newMode == DisplayMode::MOISTURE_DISPLAY) {
-    pageController.sensorTimer.setDuration(5 * 60 * 1000);
+  // Keep screen active during these modes
+  if (newMode == DisplayMode::WATERING_DISPLAY ||
+    newMode == DisplayMode::LIGHT_FASTMODE_DISPLAY ) {
     pageController.displayTimer.reset();
   }
 
@@ -110,6 +115,7 @@ void loop() {
         textManager.updateCurrentPage(newMode, moistureSensor.getPercentage());
         break;
         case LIGHT_DISPLAY:
+        case LIGHT_FASTMODE_DISPLAY:
         textManager.updateCurrentPage(newMode, lightSensor.getData(), uvSensor.getData());
         break;
         case MOISTURE_TRESHOLD_DISPLAY:
