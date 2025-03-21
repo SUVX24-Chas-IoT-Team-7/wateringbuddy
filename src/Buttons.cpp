@@ -40,8 +40,8 @@ ButtonState Button::getState() {
     if (m_awaitingLongpress && (currentTime - m_pressTime > m_longPressTime)) {
         m_awaitingLongpress = false;
         return LONGPRESS;
-      }
-      
-      m_lastState = m_currentState;
-      return NOPRESS;
+    }
+    
+    m_lastState = m_currentState;
+    return NOPRESS;
 }
