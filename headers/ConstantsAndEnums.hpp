@@ -10,6 +10,10 @@
  */
 #include <Arduino.h>
 
+/**
+ * @brief threshold names for the moisture sensor implementation
+ * 
+ */
 enum thresholdNames
 {
   DRY,
@@ -17,6 +21,10 @@ enum thresholdNames
   WET
 };
 
+/**
+ * @brief Moisture and related LED pins
+ * 
+ */
 namespace moisture
 {
   /**

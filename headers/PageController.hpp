@@ -1,7 +1,7 @@
 /**
  * @file PageController.hpp
  * @author Erik Dahl (erik@iunderlandet.se) & John Collinder
- * @brief Class manages buttons and the current state
+ * @brief This class manages buttons and the current state of displaymode and LCD
  * @version 0.1
  * @date 2025-03-18
  */
@@ -12,6 +12,10 @@
 #include "ThresholdManager.hpp"
 #include "Timer.hpp"
 
+/**
+ * @brief This class manages buttons and the current state of displaymode and LCD
+ * 
+ */
 class PageController
 {
 private:

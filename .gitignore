@@ -5,3 +5,6 @@
 
 ## ignore windows specific files
 .DS_Store
+
+## ignore doxygen configuration file
+Doxyfile

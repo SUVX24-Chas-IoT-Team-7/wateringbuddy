@@ -16,6 +16,10 @@
 #include "ConstantsAndEnums.hpp"
 #include <algorithm>
 
+/**
+ * @brief This class is used to handle the thresholds for the soil moisture sensor
+ * 
+ */
 class ThresholdManager
 {
 private:

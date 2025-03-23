@@ -14,6 +14,11 @@
 #include <LiquidCrystal_I2C.h>
 #include <stdlib.h>
 
+/**
+ * @brief This class generates formated text to be displayed on the LCD
+ * or Serial Monitor
+ * 
+ */
 class TextManager
 {
 private:
